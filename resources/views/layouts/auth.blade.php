@@ -76,13 +76,6 @@
         </nav>
 
         <main class="py-4">
-            <div>ホーム画面？？？</div>
-            <div class="form-group">
-                <label for="exampleFormControlTextarea1">ルール</label>
-                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="ルール"></textarea>
-                <button type="button" class="btn btn-primary btn-lg btn-block">練習問題</button>
-                <button type="button" class="btn btn-secondary btn-lg btn-block">確認テスト</button>
-              </div>
             @yield('content')
         </main>
     </div>
