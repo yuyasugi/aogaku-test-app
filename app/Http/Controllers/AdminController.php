@@ -6,10 +6,11 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\DB;
 
-class UserController extends Controller
+class AdminController extends Controller
 {
     public function user(){
+        $TestResults = DB::table('test_results')->get();
         $Users = DB::table('users')->get();
-        return view('admin',compact('Users'));
+        return view('admin',compact(['Users', 'TestResults']));
      }
 }
