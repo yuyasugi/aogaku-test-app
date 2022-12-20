@@ -10,13 +10,37 @@
         <button class="btn btn-outline-warning" type="submit">Search</button>
       </form>
     </div>
-  </nav>
-@foreach ($Users as $User)
-<ul class="list-group" style="width: 15%">
-    <li class="list-group-item text-center">{{$User->name}}</li>
-    <li class="list-group-item text-center">{{$User->name}}</li>
-    <li class="list-group-item text-center">{{$User->name}}</li>
-    <li class="list-group-item text-center">{{$User->name}}</li>
-    <li class="list-group-item text-center">{{$User->name}}</li>
-  </ul>
-@endforeach
+</nav>
+<div class="main">
+    <div class="name-list">
+        @foreach ($Users as $User)
+        <ul class="list-group" style="width: 15%">
+            <li class="list-group-item text-center">{{$User->name}}</li>
+            <li class="list-group-item text-center">{{$User->name}}</li>
+            <li class="list-group-item text-center">{{$User->name}}</li>
+            <li class="list-group-item text-center">{{$User->name}}</li>
+            <li class="list-group-item text-center">{{$User->name}}</li>
+        </ul>
+        @endforeach
+    </div>
+    <div class="test-result">
+        <table border="1">
+            <tr>
+                <th>名前</th>
+                <th>点数</th>
+                <th>単元</th>
+                <th>作成日時</th>
+                <th>更新日時</th>
+            </tr>
+            @foreach($TestResults as $TestResult)
+                <tr>
+                    <th>{{$TestResult->user_id}}</th>
+                    <th>{{$TestResult->score}}</th>
+                    <th>{{$TestResult->unit_test_id}}</th>
+                    <th>{{$TestResult->created_at}}</th>
+                    <th>{{$TestResult->updated_at}}</th>
+                </tr>
+            @endforeach
+        </table>
+    </div>
+</div>
