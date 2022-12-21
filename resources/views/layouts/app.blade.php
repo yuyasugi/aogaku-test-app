@@ -21,9 +21,9 @@
 </head>
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+        <nav class="navbar navbar-expand-md navbar-light bg-success shadow-sm">
             <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}">
+                <a class="navbar-brand text-light" href="{{ url('/') }}">
                     {{ config('app.name', 'Laravel') }}
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
@@ -42,13 +42,13 @@
                         @guest
                             @if (Route::has('login'))
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                                    <a class="nav-link text-light" href="{{ route('login') }}">{{ __('ログイン') }}</a>
                                 </li>
                             @endif
 
                             @if (Route::has('register'))
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                                    <a class="nav-link text-light" href="{{ route('register') }}">{{ __('新規登録') }}</a>
                                 </li>
                             @endif
                         @else
@@ -75,14 +75,7 @@
             </div>
         </nav>
 
-        <main class="py-4">
-            <div>ホーム画面？？？</div>
-            <div class="form-group">
-                <label for="exampleFormControlTextarea1">ルール</label>
-                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="ルール"></textarea>
-                <button type="button" class="btn btn-primary btn-lg btn-block">練習問題</button>
-                <button type="button" class="btn btn-secondary btn-lg btn-block">確認テスト</button>
-              </div>
+        <main class="py-5" style="background-color: rgba( 0, 204, 0, 0.5 );">
             @yield('content')
         </main>
     </div>
