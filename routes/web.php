@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\SubjectTestController;
+use App\Http\Controllers\SubjectPracticeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,3 +27,5 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::get('/', [HomeController::class, 'index'])->name('index');
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 Route::get('/admin', [AdminController::class, 'user', 'test_result']);
+Route::get('/subject_test', [SubjectTestController::class, 'subject_test']);
+Route::get('/subject_practice', [SubjectPracticeController::class, 'subject_practice']);
