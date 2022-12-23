@@ -75,12 +75,7 @@
                 </div>
             </div>
         </nav>
-        <header style="background-color: rgb(6, 121, 56); height: 45px">
-            <div class="header-text text-light">
-                <p class="text-center fw-bold pt-3">ホーム</p>
-            </div>
-        </header>
-        <main class="py-4">
+        <main class="#">
             @yield('content')
         </main>
         <footer style="position:absolute; bottom:0; width:100%; height:50px; background-color:rgb(222, 225, 225)">
