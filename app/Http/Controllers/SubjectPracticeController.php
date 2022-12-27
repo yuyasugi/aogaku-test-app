@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\DB;
 class SubjectPracticeController extends Controller
 {
     public function subject_practice(){
-        return view('subject_practice');
+        $SubjectPractice = DB::table('subjects')->get();
+        return view('subject_practice',compact('SubjectPractice'));
      }
 }
