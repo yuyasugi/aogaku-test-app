@@ -5,6 +5,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\SubjectTestController;
 use App\Http\Controllers\SubjectPracticeController;
+use App\Http\Controllers\ReferenceBookTestController;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,3 +30,4 @@ Route::get('/home', [HomeController::class, 'index'])->name('home');
 Route::get('/admin', [AdminController::class, 'user', 'test_result']);
 Route::get('/subject_test', [SubjectTestController::class, 'subject_test']);
 Route::get('/subject_practice', [SubjectPracticeController::class, 'subject_practice']);
+Route::get('/reference_book_test', [ReferenceBookTestController::class, 'reference_test']);
