@@ -6,6 +6,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\SubjectTestController;
 use App\Http\Controllers\SubjectPracticeController;
 use App\Http\Controllers\ReferenceBookTestController;
+use App\Http\Controllers\ReferenceBookPracticeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,3 +32,4 @@ Route::get('/admin', [AdminController::class, 'user', 'test_result']);
 Route::get('/subject_test', [SubjectTestController::class, 'subject_test']);
 Route::get('/subject_practice', [SubjectPracticeController::class, 'subject_practice']);
 Route::get('/reference_book_test', [ReferenceBookTestController::class, 'reference_test']);
+Route::get('/reference_book_practice', [ReferenceBookPracticeController::class, 'reference_practice']);
