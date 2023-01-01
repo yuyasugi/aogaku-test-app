@@ -7,9 +7,8 @@ use App\Http\Controllers\SubjectTestController;
 use App\Http\Controllers\SubjectPracticeController;
 use App\Http\Controllers\ReferenceBookTestController;
 use App\Http\Controllers\ReferenceBookPracticeController;
-use App\Http\Controllers\UnitTestController;
-use App\Http\Controllers\UnitPracticeController;
-use App\Http\Controllers\TestIssueController;
+use App\Http\Controllers\UnitController;
+use App\Http\Controllers\IssueController;
 
 /*
 |--------------------------------------------------------------------------
@@ -36,6 +35,5 @@ Route::get('/subject_test', [SubjectTestController::class, 'subject_test']);
 Route::get('/subject_practice', [SubjectPracticeController::class, 'subject_practice']);
 Route::get('/reference_book_test', [ReferenceBookTestController::class, 'reference_test']);
 Route::get('/reference_book_practice', [ReferenceBookPracticeController::class, 'reference_practice']);
-Route::get('/unit_test/{reference_book_id}', [UnitTestController::class, 'unit_test']);
-Route::get('/unit_practice', [UnitPracticeController::class, 'unit_practice']);
-Route::get('/test_issue', [TestIssueController::class, 'test_issue']);
+Route::get('/unit/{reference_book_id}', [UnitController::class, 'unit']);
+Route::get('/issue', [IssueController::class, 'issue']);
