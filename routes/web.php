@@ -35,5 +35,5 @@ Route::get('/subject_test', [SubjectTestController::class, 'subject_test']);
 Route::get('/subject_practice', [SubjectPracticeController::class, 'subject_practice']);
 Route::get('/reference_book_test', [ReferenceBookTestController::class, 'reference_test']);
 Route::get('/reference_book_practice', [ReferenceBookPracticeController::class, 'reference_practice']);
-Route::get('/unit_test/{id}', [UnitTestController::class, 'unit_test']);
-Route::get('/unit_practice', [UnitPracticeController::class, 'unit_practice']);
+Route::get('/unit_test/{reference_book_id}', [UnitTestController::class, 'unit_test']);
+Route::get('/unit_practice/{reference_book_id}', [UnitPracticeController::class, 'unit_practice']);
