@@ -3,17 +3,15 @@
 namespace App\Http\Controllers;
 
 use App\Models\ReferenceBook;
-use App\Models\UnitTest;
+use App\Models\Unit;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\DB;
 
 class UnitTestController extends Controller
 {
-    public function unit_test($id){
-        $UnitTest = DB::table('unit_tests')->select('name')->get();
-
-        $ReferenceUnit = ReferenceBook::find($id);
-        return view('unit_test',compact('UnitTest', 'ReferenceUnit'));
+    public function unit_test($reference_book_id){
+        $UnitTest = Unit::where('reference_book_id', '=', $reference_book_id)->get();
+        return view('unit_test',compact('UnitTest'));
      }
 }
