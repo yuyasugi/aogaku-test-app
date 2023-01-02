@@ -7,8 +7,8 @@
     </div>
 </header>
 <div class="button text-center">
-    @foreach($UnitTest as $Unit)
-    <a href=""><button type="button" class="btn btn-success" style="width: 90%; height:150px; margin-top:20px; border-radius:20px">{{$Unit->name}}</button></a>
+    @foreach($Unit as $UnitTest)
+    <a href=""><button type="button" class="btn btn-success" style="width: 90%; height:150px; margin-top:20px; border-radius:20px">{{$UnitTest->name}}</button></a>
     @endforeach
 </div>
 @endsection

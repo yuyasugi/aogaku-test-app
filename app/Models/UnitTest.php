@@ -8,4 +8,5 @@ use Illuminate\Database\Eloquent\Model;
 class UnitTest extends Model
 {
     use HasFactory;
+    protected $table = 'units';
 }

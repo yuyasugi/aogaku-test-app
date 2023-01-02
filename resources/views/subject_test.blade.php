@@ -7,7 +7,8 @@
     </div>
 </header>
 <div class="button text-center">
-    <button type="button" class="btn btn-success" style="width: 90%; height:150px; margin-top:20px; border-radius:20px">英語</button>
-    <button type="button" class="btn btn-success" style="width: 90%; height:150px; margin-top:20px; border-radius:20px">社会</button>
+    @foreach($SubjectTest as $Subject)
+    <button type="button" class="btn btn-success" style="width: 90%; height:150px; margin-top:20px; border-radius:20px">{{$Subject->name}}</button>
+    @endforeach
 </div>
 @endsection
