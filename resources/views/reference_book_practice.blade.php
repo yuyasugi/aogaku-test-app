@@ -7,8 +7,8 @@
     </div>
 </header>
 <div class="button text-center">
-    @foreach($ReferenceBookPractice as $reference_book_id => $ReferenceBook)
-    <a href="/unit_practice/{{$reference_book_id}}"><button type="button" class="btn btn-success" style="width: 90%; height:150px; margin-top:20px; border-radius:20px">{{$ReferenceBook->name}}</button></a>
+    @foreach($ReferenceBookPractice as $index => $ReferenceBook)
+    <a href="/unit_practice/{{$ReferenceBook->id}}"><button type="button" class="btn btn-success" style="width: 90%; height:150px; margin-top:20px; border-radius:20px">{{$ReferenceBook->name}}</button></a>
     @endforeach
 </div>
 @endsection
