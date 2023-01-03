@@ -8,7 +8,7 @@
 </header>
 <div class="button text-center">
     @foreach($SubjectPractice as $Subject)
-    <button type="button" class="btn btn-success" style="width: 90%; height:150px; margin-top:20px; border-radius:20px">{{$Subject->name}}</button>
+    <a href="http://localhost:8888/reference_book_practice"><button type="button" class="btn btn-success" style="width: 90%; height:150px; margin-top:20px; border-radius:20px">{{$Subject->name}}</button></a>
     @endforeach
 </div>
 @endsection
