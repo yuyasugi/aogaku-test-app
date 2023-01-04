@@ -1,8 +1,12 @@
 @extends('layouts.auth')
 
 @section('content')
-@foreach($Issue as $TestIssue)
-<p>{{$TestIssue->problem_statement}}</p>
-<a href="#"><button type="button" class="btn btn-success" style="width: 90%; height:150px; margin-top:20px; border-radius:20px">次へ</button></a>
-@endforeach
+<form class="issue-box pt-3" action="{{ route('result') }}" method="POST">
+    @csrf
+    @foreach($Issue as $Issue)
+    <p>{{$Issue->problem}}</p>
+    <input class="form-control mb-3" name="anser" type="text" placeholder="解答を入力" aria-label="default input example">
+    @endforeach
+    <button type="submit" class="btn btn-success">解答</button>
+</form>
 @endsection
