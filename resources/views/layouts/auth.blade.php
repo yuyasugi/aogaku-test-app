@@ -75,10 +75,10 @@
                 </div>
             </div>
         </nav>
-        <main class="#">
+        <main class="#" style="padding-bottom: 50px">
             @yield('content')
         </main>
-        <footer style="position:absolute; bottom:0; width:100%; height:50px; background-color:rgb(222, 225, 225)">
+        <footer style="position: fixed; bottom:0; width:100%; height:50px; background-color:rgb(222, 225, 225)">
             <div class="footer-icon text-center">
                 <a href="http://localhost:8888/"><i class="fas fa-home-lg fa-2x pt-2"></i></a>
             </div>
