@@ -39,5 +39,5 @@ Route::get('/reference_book_test', [ReferenceBookTestController::class, 'referen
 Route::get('/reference_book_practice', [ReferenceBookPracticeController::class, 'reference_practice']);
 Route::get('/unit_test/{reference_book_id}', [UnitTestController::class, 'unit_test']);
 Route::get('/unit_practice/{reference_book_id}', [UnitPracticeController::class, 'unit_practice']);
-Route::get('/issue', [IssueController::class, 'issue']);
+Route::get('/issue/{unit_id}', [IssueController::class, 'issue']);
 Route::post('/result', [ResultController::class, 'result'])->name('result');
