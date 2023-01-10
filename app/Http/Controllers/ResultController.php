@@ -16,14 +16,12 @@ class ResultController extends Controller
 {
     public function result(Request $request){
         $issue = new Issue;
-        $posts = $request->all();//⇦10番の問題の解答しか入ってこない
-        $issues = Issue::select()
+        $posts = $request->all();
+        $issues = $issue->select()
                     ->join('unit_issues', 'unit_issues.issue_id', '=', 'issues.id')
                     ->where('unit_id', 1)
                     ->get();
         //ここの$issuesで全ての問題が取れてしまっている。unit_idで指定したい
-
-
         foreach( $issues as $index => $issue){
             $correct =  $issue->anser === $posts[$index+1];
             if($correct == true){
