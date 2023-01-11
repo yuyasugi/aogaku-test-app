@@ -6,7 +6,7 @@ use App\Models\Issue;
 use App\Models\IssueResult;
 use App\Models\ReferenceBook;
 use App\Models\Unit;
-use App\Models\UnitTest;
+use App\Models\UnitIssue;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\DB;
@@ -15,6 +15,7 @@ use Illuminate\Support\Facades\DB;
 class ResultController extends Controller
 {
     public function result(Request $request){
+        $units = UnitIssue::find();
         $issue = new Issue;
         $posts = $request->all();
         $issues = $issue->select()
@@ -22,6 +23,7 @@ class ResultController extends Controller
                     ->where('unit_id', 1)
                     ->get();
         //ここの$issuesで全ての問題が取れてしまっている。unit_idで指定したい
+        dd($issues);
         foreach( $issues as $index => $issue){
             $correct =  $issue->anser === $posts[$index+1];
             if($correct == true){
