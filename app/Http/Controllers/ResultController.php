@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Issue;
 use App\Models\IssueResult;
 use App\Models\ReferenceBook;
+use App\Models\Result;
 use App\Models\Unit;
 use App\Models\UnitIssue;
 use Illuminate\Http\Request;
@@ -15,21 +16,19 @@ use Illuminate\Support\Facades\DB;
 class ResultController extends Controller
 {
     public function result(Request $request){
-        $units = UnitIssue::find();
         $issue = new Issue;
         $posts = $request->all();
         $issues = $issue->select()
                     ->join('unit_issues', 'unit_issues.issue_id', '=', 'issues.id')
-                    ->where('unit_id', 1)
                     ->get();
-        //ここの$issuesで全ての問題が取れてしまっている。unit_idで指定したい
-        dd($issues);
         foreach( $issues as $index => $issue){
             $correct =  $issue->anser === $posts[$index+1];
             if($correct == true){
-                IssueResult::create(['user_id' => 1, 'unit_id' => 1, 'issue_id' => $issue->id, 'correct'=> true]);
+                IssueResult::create(['issue_id' => $issue->id, 'correct'=> true, 'result_id' => 1]);
+                Result::create(['unit_id' => 1, 'user_id' => 1]);
                 } else{
-                    IssueResult::create(['user_id' => 1, 'unit_id' => 1, 'issue_id' => $issue->id,'correct'=> false]);
+                    IssueResult::create(['issue_id' => $issue->id,'correct'=> false, 'result_id' => 1]);
+                    Result::create(['unit_id' => 1, 'user_id' => 1]);
                 }
             };
 
