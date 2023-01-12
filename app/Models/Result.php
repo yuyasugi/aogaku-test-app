@@ -5,8 +5,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class IssueResult extends Model
+class Result extends Model
 {
     use HasFactory;
-    protected $fillable = ['issue_id', 'correct', 'result_id'];
+    protected $fillable = ['unit_id', 'user_id'];
 }
