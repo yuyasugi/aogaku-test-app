@@ -20,6 +20,7 @@ class IssueController extends Controller
                     ->join('issues', 'issues.id', '=', 'unit_issues.issue_id')
                     ->where('unit_id', $unit_id)
                     ->get();
-        return view('issue',compact(['Issue', 'UnitIssue']));
+        $UnitId = $unit_id;
+        return view('issue',compact(['Issue', 'UnitIssue', 'UnitId']));
      }
 }

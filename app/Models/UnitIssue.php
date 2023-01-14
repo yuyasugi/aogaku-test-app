@@ -8,4 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class UnitIssue extends Model
 {
     use HasFactory;
+
+    public function units()
+{
+    return $this->belongsTo(Unit::class, 'unit_id');
+}
 }
