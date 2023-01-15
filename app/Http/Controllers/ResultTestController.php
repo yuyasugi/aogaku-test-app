@@ -18,14 +18,20 @@ class ResultTestController extends Controller
     public function result_test(Request $request){
         $result = Result::create(['unit_id' => $request->unit_id, 'user_id' => 1]);
         $issue = new Issue;
-        $posts = $request->all();
-        $issues = $issue->select()
-                    ->join('unit_issues', 'unit_issues.issue_id', '=', 'issues.id')
-                    ->where('unit_id', $request->unit_id)
-                    ->get();
+        $posts = $request->except(['_token', 'unit_id']);
+        $keys = array_keys($posts);
+        $issues = array_map( function($posts) {
+            $issue = new Issue;
+            return $issue->find($posts);
+           }, $keys);
+           dd($issues);
+        // $issues = $issue->select()
+        //             ->join('unit_issues', 'unit_issues.issue_id', '=', 'issues.id')
+        //             ->where('unit_id', $request->unit_id)
+        //             ->get();
 
         foreach( $issues as $index => $issue){
-            $correct =  $issue->anser === $posts[$index+1];
+            $correct =  $issue->anser === $posts[$index];
             if($correct == true){
                 IssueResult::create(['issue_id' => $issue->id, 'correct'=> true, 'result_id' => $result->id]);
                 } else{
