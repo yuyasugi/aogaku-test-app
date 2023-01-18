@@ -9,12 +9,12 @@
             <th>単元</th>
             <th>点数</th>
         </tr>
-        @foreach($TestResults as $TestResult)
+        @foreach($results as $result)
             <tr>
-                <th>{{$TestResult->subject_id}}</th>
-                <th>{{$TestResult->reference_book_id}}</th>
-                <th>{{$TestResult->unit_id}}</th>
-                <th><p>{{ $score . '/' . $issue_count . '点'}}</p></th>
+                <th>{{$result->subjectName}}</th>
+                <th>{{$result->referenceBookName}}</th>
+                <th>{{$result->unitName}}</th>
+                <th><p>{{ $result->score . '/' . $result->issueCount . '点'}}</p></th>
             </tr>
         @endforeach
     </table>

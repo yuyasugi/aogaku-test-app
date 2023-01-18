@@ -10,10 +10,9 @@ use App\Models\UnitIssue;
 
 class IssueController extends Controller
 {
-    public function issue($unit_id, $user_id){
+    public function issue($unit_id){
         $issue = new Issue;
         $Issue = $issue->get_all_issue();
-        $UserId = User::where('id', '=', $user_id)->get();
 
         $UnitIssue = UnitIssue::select()
                     ->where('unit_id', '=', $unit_id)
@@ -22,6 +21,6 @@ class IssueController extends Controller
                     ->where('unit_id', $unit_id)
                     ->get();
         $UnitId = $unit_id;
-        return view('issue',compact(['Issue', 'UnitIssue', 'UnitId', 'UserId']));
+        return view('issue',compact(['Issue', 'UnitIssue', 'UnitId']));
      }
 }
