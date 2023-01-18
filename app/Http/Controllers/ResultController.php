@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\DB;
 class ResultController extends Controller
 {
     public function result(Request $request){
-        $result = Result::create(['unit_id' => $request->unit_id, 'user_id' => 1]);
+        $result = Result::create(['unit_id' => $request->unit_id, 'user_id' => 4]);
         $issue = new Issue;
         $posts = $request->all();
         $issues = $issue->select()
@@ -25,7 +25,7 @@ class ResultController extends Controller
                     ->get();
 
         foreach( $issues as $index => $issue){
-            $correct =  $issue->anser === $posts[$index+1];
+            $correct =  $issue->anser === $posts[$issue->id];
             if($correct == true){
                 IssueResult::create(['issue_id' => $issue->id, 'correct'=> true, 'result_id' => $result->id]);
                 } else{

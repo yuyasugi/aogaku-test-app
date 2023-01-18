@@ -2,7 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
-use App\Http\Controllers\AdminController;
+use App\Http\Controllers\AdminUserController;
+use App\Http\Controllers\UserResultController;
 use App\Http\Controllers\SubjectTestController;
 use App\Http\Controllers\SubjectPracticeController;
 use App\Http\Controllers\ReferenceBookTestController;
@@ -34,7 +35,8 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/', [HomeController::class, 'index'])->name('index');
 Route::get('/home', [HomeController::class, 'index'])->name('home');
-Route::get('/admin', [AdminController::class, 'user']);
+Route::get('/admin', [AdminUserController::class, 'user']);
+Route::get('/user_result/{user_id}', [UserResultController::class, 'user_result']);
 Route::get('/subject_test', [SubjectTestController::class, 'subject_test']);
 Route::get('/subject_practice', [SubjectPracticeController::class, 'subject_practice']);
 Route::get('/reference_book_test', [ReferenceBookTestController::class, 'reference_test']);
