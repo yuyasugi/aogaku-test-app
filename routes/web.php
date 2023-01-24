@@ -4,6 +4,9 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AdminUserController;
 use App\Http\Controllers\UserResultController;
+use App\Http\Controllers\CreateIssueController;
+use App\Http\Controllers\StoreController;
+
 use App\Http\Controllers\SubjectTestController;
 use App\Http\Controllers\SubjectPracticeController;
 use App\Http\Controllers\ReferenceBookTestController;
@@ -37,10 +40,13 @@ Route::get('/', [HomeController::class, 'index'])->name('index');
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 Route::get('/admin', [AdminUserController::class, 'user']);
 Route::get('/user_result/{user_id}', [UserResultController::class, 'user_result']);
+Route::post('/store', [StoreController::class, 'store'])->name('store');
+Route::get('/create_issue', [CreateIssueController::class, 'create_issue']);
+
 Route::get('/subject_test', [SubjectTestController::class, 'subject_test']);
 Route::get('/subject_practice', [SubjectPracticeController::class, 'subject_practice']);
-Route::get('/reference_book_test', [ReferenceBookTestController::class, 'reference_test']);
-Route::get('/reference_book_practice', [ReferenceBookPracticeController::class, 'reference_practice']);
+Route::get('/reference_book_test/{subject_id}', [ReferenceBookTestController::class, 'reference_test']);
+Route::get('/reference_book_practice/{subject_id}', [ReferenceBookPracticeController::class, 'reference_practice']);
 Route::get('/unit_test/{reference_book_id}', [UnitTestController::class, 'unit_test']);
 Route::get('/unit_practice/{reference_book_id}', [UnitPracticeController::class, 'unit_practice']);
 Route::get('/issue/{unit_id}', [IssueController::class, 'issue']);

@@ -12,9 +12,17 @@
     @csrf
     <div class="form-group">
         <p>教科</p>
-        <input class="form-control w-50" type="text" name="subject">
+        <select class="form-control" name="subject">
+            @foreach ($createSubjects as $subject)
+                <option value="{{ $subject->id }}">{{ $subject->name }}</option>
+            @endforeach
+        </select>
         <p>参考書</p>
-        <input class="form-control w-50" type="text" name="referenceBook">
+        <select class="form-control" name="referenceBook">
+            @foreach ($createReferenceBooks as $reference_book)
+                <option value="{{ $reference_book->id }}">{{ $reference_book->name }}</option>
+            @endforeach
+        </select>
         <p>単元</p>
         <input class="form-control w-50" type="text" name="unit">
         <h2>問題</h2>

@@ -6,7 +6,7 @@
     <div class="container-fluid">
       <a class="navbar-brand text-white">青学コーチング</a>
     </div>
-  </nav>
+</nav>
 <div class="main d-flex">
     <div class="name-list" style="width: 15%">
         @foreach ($Users as $User)
@@ -19,3 +19,4 @@
         @yield('content')
     </div>
 </div>
+
