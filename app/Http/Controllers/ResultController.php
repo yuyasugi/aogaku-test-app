@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\DB;
 class ResultController extends Controller
 {
     public function result(Request $request){
-        $result = Result::create(['unit_id' => $request->unit_id, 'user_id' => 4]);
+        $result = Result::create(['unit_id' => $request->unit_id, 'user_id' => \Auth::id()]);
         $issue = new Issue;
         $posts = $request->all();
         $issues = $issue->select()
