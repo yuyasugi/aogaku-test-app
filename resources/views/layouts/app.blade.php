@@ -40,15 +40,15 @@
                     <ul class="navbar-nav ms-auto">
                         <!-- Authentication Links -->
                         @guest
-                            @if (Route::has('login'))
+                            @if (Route::has('user.login.get'))
                                 <li class="nav-item">
-                                    <a class="nav-link text-light" href="{{ route('login') }}">{{ __('ログイン') }}</a>
+                                    <a class="nav-link text-light" href="{{ route('user.login.get') }}">{{ __('ログイン') }}</a>
                                 </li>
                             @endif
 
-                            @if (Route::has('register'))
+                            @if (Route::has('user.register'))
                                 <li class="nav-item">
-                                    <a class="nav-link text-light" href="{{ route('register') }}">{{ __('新規登録') }}</a>
+                                    <a class="nav-link text-light" href="{{ route('user.register') }}">{{ __('新規登録') }}</a>
                                 </li>
                             @endif
                         @else
@@ -58,13 +58,13 @@
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('admin.logout') }}"
+                                    <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                                         {{ __('Logout') }}
                                     </a>
 
-                                    <form id="logout-form" action="{{ route('admin.logout') }}" method="POST" class="d-none">
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                         @csrf
                                     </form>
                                 </div>
