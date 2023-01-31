@@ -12,7 +12,7 @@ class AuthenticatedSessionController extends Controller
 {
     public function create()
     {
-        return view('admin.auth.login');
+        return view('admin.login');
     }
 
     public function store(LoginRequest $request)
@@ -32,6 +32,6 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerateToken();
 
-        return redirect('/admin');
+        return redirect('/admin/login');
     }
 }

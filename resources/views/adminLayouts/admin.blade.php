@@ -11,7 +11,7 @@
     <div class="name-list" style="width: 15%">
         @foreach ($Users as $User)
         <ul class="list-group">
-            <a href="http://localhost:8888/user_result/{{$User->id}}"><li class="list-group-item text-center">{{$User->name}}</li></a>
+            <a href="http://localhost:8888/admin/user_result/{{$User->id}}"><li class="list-group-item text-center">{{$User->name}}</li></a>
         </ul>
         @endforeach
     </div>

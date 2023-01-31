@@ -10,6 +10,13 @@ use App\Http\Controllers\Admin\Auth\RegisteredUserController;
 use App\Http\Controllers\Admin\Auth\VerifyEmailController;
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\AdminUserController;
+use App\Http\Controllers\UserResultController;
+use App\Http\Controllers\CreateIssueController;
+use App\Http\Controllers\StoreController;
+
+
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -21,12 +28,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/login','Admin\Auth\LoginController@showLoginForm');
-Route::post('login', 'Admin\Auth\LoginController@login')->name('login.post');
-Route::post('logout', 'Admin\Auth\LoginController@logout')->name('logout');
+// Route::get('/login','Admin\Auth\LoginController@showLoginForm')->name('login');
+// Route::post('/login', 'Admin\Auth\LoginController@login')->name('login.post');
+// Route::post('logout', 'Admin\Auth\LoginController@logout')->name('logout');
 
-Route::get('register', 'Auth\RegisterController@showRegistrationForm')->name('register');
-Route::post('register', 'Auth\RegisterController@register');
+// Route::get('register', 'Auth\RegisterController@showRegistrationForm')->name('register');
+// Route::post('register', 'Auth\RegisterController@register');
 
 Route::get('password/reset', 'Auth\ForgotPasswordController@showLinkRequestForm')->name('password.request');
 Route::post('password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail')->name('password.email');
@@ -41,19 +48,26 @@ Route::get('/admin', function () {
     return view('admin');
 })->middleware(['auth:admins'])->name('admin');
 
-// Route::get('/register', [RegisteredUserController::class, 'create'])
-//                 ->middleware('guest')
-//                 ->name('register');
+Route::get('/admin', [AdminUserController::class, 'user']);
+Route::get('/user_result/{user_id}', [UserResultController::class, 'user_result']);
+Route::post('/store', [StoreController::class, 'store'])->name('store');
+Route::get('/create_issue', [CreateIssueController::class, 'create_issue'])->name('create_issue');
 
-// Route::post('/register', [RegisteredUserController::class, 'store'])
-//                 ->middleware('guest');
 
-// Route::get('/login', [AuthenticatedSessionController::class, 'create'])
-//                 ->middleware('guest')
-//                 ->name('login');
 
-// Route::post('/login', [AuthenticatedSessionController::class, 'store'])
-//                 ->middleware('guest');
+Route::get('/register', [RegisteredUserController::class, 'create'])
+                ->middleware('guest')
+                ->name('register');
+
+Route::post('/register', [RegisteredUserController::class, 'store'])
+                ->middleware('guest');
+
+Route::get('/login', [AuthenticatedSessionController::class, 'create'])
+                ->middleware('guest')
+                ->name('login');
+
+Route::post('/login', [AuthenticatedSessionController::class, 'store'])
+                ->middleware('guest');
 
 // Route::get('/forgot-password', [PasswordResetLinkController::class, 'create'])
 //                 ->middleware('guest')
@@ -90,6 +104,6 @@ Route::get('/admin', function () {
 // Route::post('/confirm-password', [ConfirmablePasswordController::class, 'store'])
 //                 ->middleware('auth:admins');
 
-// Route::post('/logout', [AuthenticatedSessionController::class, 'destroy'])
-//                 ->middleware('auth:admins')
-//                 ->name('logout');
+Route::post('/logout', [AuthenticatedSessionController::class, 'destroy'])
+                ->middleware('auth:admins')
+                ->name('logout');

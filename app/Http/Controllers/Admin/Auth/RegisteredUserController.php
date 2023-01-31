@@ -15,7 +15,7 @@ class RegisteredUserController extends Controller
 {
     public function create()
     {
-        return view('admin.auth.register');
+        return view('admin.register');
     }
 
     public function store(Request $request)

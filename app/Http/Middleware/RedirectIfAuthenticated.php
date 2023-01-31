@@ -14,10 +14,10 @@ class RedirectIfAuthenticated
 
     public function handle(Request $request, Closure $next, ...$guards)
     {
-        if (Auth::guard(self::GUARD_ADMIN)->check() && $request->routIs('admin.*')) {
+        if (Auth::guard(self::GUARD_ADMIN)->check() && $request->routeIs('admin.*')) {
                 return redirect(RouteServiceProvider::ADMIN_HOME);
             }
-        if (Auth::guard(self::GUARD_USER)->check() && $request->routIs('user.*')) {
+        if (Auth::guard(self::GUARD_USER)->check() && $request->routeIs('user.*')) {
                 return redirect(RouteServiceProvider::HOME);
             };
         return $next($request);

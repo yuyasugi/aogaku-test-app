@@ -8,7 +8,7 @@
     </div>
 </nav>
 
-<form class="create_issue" action="{{ route('store') }}" method="POST">
+<form class="create_issue" action="{{ route('admin.store') }}" method="POST">
     @csrf
     <div class="form-group">
         <p>教科</p>
@@ -24,7 +24,11 @@
             @endforeach
         </select>
         <p>単元</p>
-        <input class="form-control w-50" type="text" name="unit">
+        <select class="form-control" name="unit">
+            @foreach ($createUnits as $unit)
+                <option value="{{ $unit->id }}">{{ $unit->name }}</option>
+            @endforeach
+        </select>
         <h2>問題</h2>
         <p>問題文</p>
         <textarea class="form-control w-50" name="problem" rows="3"></textarea>
