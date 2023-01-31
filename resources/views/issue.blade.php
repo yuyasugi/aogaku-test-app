@@ -1,7 +1,7 @@
 @extends('layouts.auth')
 
 @section('content')
-<form class="issue-box pt-3" action="{{ route('result') }}" method="POST">
+<form class="issue-box pt-3" action="{{ route('user.result') }}" method="POST">
     @csrf
     @foreach($UnitIssue as $Issue)
     <p>{{$Issue->problem}}</p>

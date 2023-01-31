@@ -70,6 +70,6 @@ class UserResultController extends Controller
             //                 ->count();
 
 
-            return view('user_result',compact(['user', 'results','Users']));
+            return view('admin.user_result',compact(['user', 'results','Users']));
     }
 }
