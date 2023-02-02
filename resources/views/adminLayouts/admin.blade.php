@@ -39,7 +39,7 @@
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ms-auto">
                         <li class="nav-item">
-                            <a class="nav-link text-light" href="http://localhost:8888/admin/create_issue">問題作成へ</a>
+                            <a class="nav-link text-light" href="{{ route('admin.create_issue') }}">問題作成へ</a>
                         </li>
                         <!-- Authentication Links -->
                         {{-- @guest
@@ -89,7 +89,7 @@
     <div class="name-list" style="width: 15%">
         @foreach ($Users as $User)
         <ul class="list-group">
-            <a href="http://localhost:8888/admin/user_result/{{$User->id}}"><li class="list-group-item text-center">{{$User->name}}</li></a>
+            <a href="{{ route('admin.user_result', $User->id) }}"><li class="list-group-item text-center">{{$User->name}}</li></a>
         </ul>
         @endforeach
     </div>

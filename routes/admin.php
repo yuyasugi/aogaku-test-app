@@ -48,8 +48,8 @@ Route::get('/admin', function () {
     return view('admin');
 })->middleware(['auth:admins'])->name('admin');
 
-Route::get('/admin', [AdminUserController::class, 'user']);
-Route::get('/user_result/{user_id}', [UserResultController::class, 'user_result']);
+Route::get('/admin', [AdminUserController::class, 'user'])->name('admin');
+Route::get('/user_result/{user_id}', [UserResultController::class, 'user_result'])->name('user_result');
 Route::post('/store', [StoreController::class, 'store'])->name('store');
 Route::get('/create_issue', [CreateIssueController::class, 'create_issue'])->name('create_issue');
 
