@@ -8,7 +8,7 @@
 </header>
 <div class="button text-center">
     @foreach($ReferenceBookTest as $index => $ReferenceBook)
-    <a href="/unit_test/{{$ReferenceBook->id}}"><button type="button" class="btn btn-success" style="width: 90%; height:150px; margin-top:20px; border-radius:20px">{{$ReferenceBook->name}}</button></a>
+    <a href="{{ route('user.unit_test', $ReferenceBook->id) }}"><button type="button" class="btn btn-success" style="width: 90%; height:150px; margin-top:20px; border-radius:20px">{{$ReferenceBook->name}}</button></a>
     @endforeach
 </div>
 @endsection

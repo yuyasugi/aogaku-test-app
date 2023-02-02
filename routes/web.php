@@ -36,7 +36,7 @@ Route::get('/login','Auth\LoginController@showLoginForm')->name('login.get');
 Route::post('login', 'Auth\LoginController@login')->name('login.post');
 Route::post('logout', 'Auth\LoginController@logout')->name('logout');
 Route::get('register', 'Auth\RegisterController@showRegistrationForm')->name('register');
-Route::post('register', 'Auth\RegisterController@register');
+Route::post('register', 'Auth\RegisterController@register')->name('register');
 Route::get('password/reset', 'Auth\ForgotPasswordController@showLinkRequestForm')->name('password.request');
 Route::post('password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail')->name('password.email');
 Route::get('password/reset/{token}', 'Auth\ResetPasswordController@showResetForm')->name('password.reset');
@@ -49,13 +49,13 @@ Route::get('/home', [HomeController::class, 'index'])->name('home');
 
 
 
-Route::get('/subject_test', [SubjectTestController::class, 'subject_test']);
-Route::get('/subject_practice', [SubjectPracticeController::class, 'subject_practice']);
-Route::get('/reference_book_test/{subject_id}', [ReferenceBookTestController::class, 'reference_test']);
-Route::get('/reference_book_practice/{subject_id}', [ReferenceBookPracticeController::class, 'reference_practice']);
-Route::get('/unit_test/{reference_book_id}', [UnitTestController::class, 'unit_test']);
-Route::get('/unit_practice/{reference_book_id}', [UnitPracticeController::class, 'unit_practice']);
-Route::get('/issue/{unit_id}', [IssueController::class, 'issue']);
-Route::get('/issue_test/{unit_id}', [IssueTestController::class, 'issue_test']);
+Route::get('/subject_test', [SubjectTestController::class, 'subject_test'])->name('subject_test');
+Route::get('/subject_practice', [SubjectPracticeController::class, 'subject_practice'])->name('subject_practice');
+Route::get('/reference_book_test/{subject_id}', [ReferenceBookTestController::class, 'reference_test'])->name('reference_book_test');
+Route::get('/reference_book_practice/{subject_id}', [ReferenceBookPracticeController::class, 'reference_practice'])->name('reference_book_practice');
+Route::get('/unit_test/{reference_book_id}', [UnitTestController::class, 'unit_test'])->name('unit_test');
+Route::get('/unit_practice/{reference_book_id}', [UnitPracticeController::class, 'unit_practice'])->name('unit_practice');
+Route::get('/issue/{unit_id}', [IssueController::class, 'issue'])->name('issue');
+Route::get('/issue_test/{unit_id}', [IssueTestController::class, 'issue_test'])->name('issue_test');
 Route::post('/result', [ResultController::class, 'result'])->name('result');
 Route::post('/result_test', [ResultTestController::class, 'result_test'])->name('result_test');

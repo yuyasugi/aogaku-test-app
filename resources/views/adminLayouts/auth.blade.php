@@ -23,7 +23,7 @@
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-success shadow-sm">
             <div class="container">
-                <a class="navbar-brand text-light" href="{{ url('/admin/login') }}">
+                <a class="navbar-brand text-light" href="{{ route('admin.admin') }}">
                     {{ config('app.name', 'Laravel') }}
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
@@ -39,7 +39,7 @@
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ms-auto">
                         <li class="nav-item">
-                            <a class="nav-link text-light" href="http://localhost:8888/admin/admin">結果一覧へ</a>
+                            <a class="nav-link text-light" href="{{ route('admin.admin') }}">結果一覧へ</a>
                         </li>
                         <!-- Authentication Links -->
                         {{-- @guest
