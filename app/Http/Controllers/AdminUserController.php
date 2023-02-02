@@ -11,6 +11,6 @@ class AdminUserController extends Controller
 {
     public function user(){
         $Users = DB::table('users')->get();
-        return view('adminlayouts.admin',compact(['Users']));
+        return view('adminLayouts.admin',compact(['Users']));
      }
 }
