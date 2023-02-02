@@ -24,10 +24,6 @@ class ResultTestController extends Controller
             $issue = new Issue;
             return $issue->find($posts);
            }, $keys);
-        // $issues = $issue->select()
-        //             ->join('unit_issues', 'unit_issues.issue_id', '=', 'issues.id')
-        //             ->where('unit_id', $request->unit_id)
-        //             ->get();
 
         foreach( $issues as $index => $issue){
             $correct =  $issue->anser === $posts[$issue->id];
