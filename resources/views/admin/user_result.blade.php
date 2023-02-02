@@ -1,4 +1,4 @@
-@extends('adminlayouts.admin')
+@extends('adminLayouts.admin')
 
 @section('content')
     <div class="test-result"style="width: 100%">
