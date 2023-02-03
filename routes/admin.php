@@ -14,7 +14,12 @@ use App\Http\Controllers\AdminUserController;
 use App\Http\Controllers\UserResultController;
 use App\Http\Controllers\CreateIssueController;
 use App\Http\Controllers\StoreController;
-
+use App\Http\Controllers\EditSubjectController;
+use App\Http\Controllers\EditReferenceBookController;
+use App\Http\Controllers\EditUnitController;
+use App\Http\Controllers\EditIssueController;
+use App\Http\Controllers\EditController;
+use App\Http\Controllers\UpdateController;
 
 
 /*
@@ -35,10 +40,10 @@ use App\Http\Controllers\StoreController;
 // Route::get('register', 'Auth\RegisterController@showRegistrationForm')->name('register');
 // Route::post('register', 'Auth\RegisterController@register');
 
-Route::get('password/reset', 'Auth\ForgotPasswordController@showLinkRequestForm')->name('password.request');
-Route::post('password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail')->name('password.email');
-Route::get('password/reset/{token}', 'Auth\ResetPasswordController@showResetForm')->name('password.reset');
-Route::post('password/reset', 'Auth\ResetPasswordController@reset')->name('password.update');
+// Route::get('password/reset', 'Auth\ForgotPasswordController@showLinkRequestForm')->name('password.request');
+// Route::post('password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail')->name('password.email');
+// Route::get('password/reset/{token}', 'Auth\ResetPasswordController@showResetForm')->name('password.reset');
+// Route::post('password/reset', 'Auth\ResetPasswordController@reset')->name('password.update');
 
 Route::get('/', function () {
     return view('admin.welcome');
@@ -52,6 +57,12 @@ Route::get('/admin', [AdminUserController::class, 'user'])->name('admin');
 Route::get('/user_result/{user_id}', [UserResultController::class, 'user_result'])->name('user_result');
 Route::post('/store', [StoreController::class, 'store'])->name('store');
 Route::get('/create_issue', [CreateIssueController::class, 'create_issue'])->name('create_issue');
+Route::get('/edit_subject', [EditSubjectController::class, 'edit_subject'])->name('edit_subject');
+Route::get('/edit_reference_book/{subject_id}', [EditReferenceBookController::class, 'edit_reference'])->name('edit_reference_book');
+Route::get('/edit_unit/{reference_book_id}', [EditUnitController::class, 'edit_unit'])->name('edit_unit');
+Route::get('/edit_issue/{unit_id}', [EditIssueController::class, 'edit_issue'])->name('edit_issue');
+Route::get('/edit/{id}', [EditController::class, 'edit'])->name('edit');
+Route::post('/update', [UpdateController::class, 'update'])->name('update');
 
 
 
