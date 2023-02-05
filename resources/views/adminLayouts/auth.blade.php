@@ -42,6 +42,9 @@
                             <a class="nav-link text-light" href="{{ route('admin.admin') }}">結果一覧へ</a>
                         </li>
                         <li class="nav-item">
+                            <a class="nav-link text-light" href="{{ route('admin.edit_subject') }}">問題編集へ</a>
+                        </li>
+                        <li class="nav-item">
                             <a class="nav-link text-light" href="{{ route('admin.logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">

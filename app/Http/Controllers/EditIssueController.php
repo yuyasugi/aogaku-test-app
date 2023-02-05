@@ -19,6 +19,7 @@ class EditIssueController extends Controller
                     ->join('units', 'units.id', '=', 'unit_issues.unit_id')
                     ->join('issues', 'issues.id', '=', 'unit_issues.issue_id')
                     ->get();
+                    
         return view('admin.edit_issue',compact(['Issue', 'UnitIssue']));
      }
 }

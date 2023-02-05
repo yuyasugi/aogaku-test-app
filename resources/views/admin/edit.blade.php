@@ -1,7 +1,7 @@
 @extends('adminLayouts.auth')
 
 @section('content')
-<form class="issue-box pt-3" action="{{ route('admin.update') }}" method="POST">
+<form class="issue-box pt-3" action="{{ route('admin.update', $Issue->unit_id) }}" method="POST">
     @csrf
     <div class="form-group">
         <p>問題</p>
@@ -12,6 +12,7 @@
         <textarea class="form-control mb-3" name="commentary" type="text" cols="30" rows="5">{{$Issue->commentary}}</textarea>
     </div>
     <input type="hidden" name="issue_id" value="{{ $Issue['id'] }}">
+    {{-- <input type="hidden" name="unit_id" value="{{ $Units['id'] }}"> --}}
     <button type="submit" class="btn btn-success">更新</button>
 </form>
 @endsection
