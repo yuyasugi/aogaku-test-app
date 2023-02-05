@@ -42,6 +42,9 @@
                             <a class="nav-link text-light" href="{{ route('admin.create_issue') }}">問題作成へ</a>
                         </li>
                         <li class="nav-item">
+                            <a class="nav-link text-light" href="{{ route('admin.edit_subject') }}">問題編集へ</a>
+                        </li>
+                        <li class="nav-item">
                             <a class="nav-link text-light" href="{{ route('admin.logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
