@@ -49,20 +49,20 @@ Route::get('/', function () {
     return view('admin.welcome');
 });
 
-Route::get('/admin', function () {
-    return view('admin');
-})->middleware(['auth:admins'])->name('admin');
+// Route::get('/admin', function () {
+//     return view('admin');
+// })->middleware(['auth:admins'])->name('admin');
 
-Route::get('/admin', [AdminUserController::class, 'user'])->name('admin');
-Route::get('/user_result/{user_id}', [UserResultController::class, 'user_result'])->name('user_result');
-Route::post('/store', [StoreController::class, 'store'])->name('store');
-Route::get('/create_issue', [CreateIssueController::class, 'create_issue'])->name('create_issue');
-Route::get('/edit_subject', [EditSubjectController::class, 'edit_subject'])->name('edit_subject');
-Route::get('/edit_reference_book/{subject_id}', [EditReferenceBookController::class, 'edit_reference'])->name('edit_reference_book');
-Route::get('/edit_unit/{reference_book_id}', [EditUnitController::class, 'edit_unit'])->name('edit_unit');
-Route::get('/edit_issue/{unit_id}', [EditIssueController::class, 'edit_issue'])->name('edit_issue');
-Route::get('/edit/{id}', [EditController::class, 'edit'])->name('edit');
-Route::post('/update/{unit_id}', [UpdateController::class, 'update'])->name('update');
+Route::get('/admin', [AdminUserController::class, 'user'])->middleware(['auth:admins'])->name('admin');
+Route::get('/user_result/{user_id}', [UserResultController::class, 'user_result'])->middleware(['auth:admins'])->name('user_result');
+Route::post('/store', [StoreController::class, 'store'])->middleware(['auth:admins'])->name('store');
+Route::get('/create_issue', [CreateIssueController::class, 'create_issue'])->middleware(['auth:admins'])->name('create_issue');
+Route::get('/edit_subject', [EditSubjectController::class, 'edit_subject'])->middleware(['auth:admins'])->name('edit_subject');
+Route::get('/edit_reference_book/{subject_id}', [EditReferenceBookController::class, 'edit_reference'])->middleware(['auth:admins'])->name('edit_reference_book');
+Route::get('/edit_unit/{reference_book_id}', [EditUnitController::class, 'edit_unit'])->middleware(['auth:admins'])->name('edit_unit');
+Route::get('/edit_issue/{unit_id}', [EditIssueController::class, 'edit_issue'])->middleware(['auth:admins'])->name('edit_issue');
+Route::get('/edit/{id}', [EditController::class, 'edit'])->middleware(['auth:admins'])->name('edit');
+Route::post('/update/{unit_id}', [UpdateController::class, 'update'])->middleware(['auth:admins'])->name('update');
 
 
 
