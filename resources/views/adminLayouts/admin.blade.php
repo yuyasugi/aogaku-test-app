@@ -7,7 +7,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{ config('app.name', '青学コーチング') }}</title>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
@@ -38,14 +38,33 @@
 
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ms-auto">
-                        <li class="nav-item">
-                            <a class="nav-link text-light" href="{{ route('admin.create_issue') }}">問題作成へ</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-light" href="{{ route('admin.edit_subject') }}">問題編集へ</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-light" href="{{ route('admin.logout') }}"
+                        <!-- Authentication Links -->
+                        @guest
+                            @if (Route::has('admin.login'))
+                                <li class="nav-item">
+                                    <a class="nav-link text-light" href="{{ route('admin.login') }}">{{ __('ログイン') }}</a>
+                                </li>
+                            @endif
+
+                            @if (Route::has('admin.register'))
+                                <li class="nav-item">
+                                    <a class="nav-link text-light" href="{{ route('admin.register') }}">{{ __('新規登録') }}</a>
+                                </li>
+                            @endif
+                        @else
+                            <li class="nav-item dropdown">
+                                <a class="nav-link text-light" href="{{ route('admin.create_issue') }}"><p>問題作成画面へ</p></a>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link text-light" href="{{ route('admin.edit_subject') }}"><p>問題編集画面へ</p></a>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a id="navbarDropdown" class="nav-link dropdown-toggle text-light" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                    {{ Auth::user()->name }}
+                                </a>
+
+                                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="{{ route('admin.logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                                         {{ __('ログアウト') }}
@@ -54,7 +73,9 @@
                                     <form id="logout-form" action="{{ route('admin.logout') }}" method="POST" class="d-none">
                                         @csrf
                                     </form>
-                        </li>
+                                </div>
+                            </li>
+                        @endguest
                     </ul>
                 </div>
             </div>

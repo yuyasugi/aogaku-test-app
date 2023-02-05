@@ -15,12 +15,13 @@
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+    <link href="https://use.fontawesome.com/releases/v6.1.1/css/all.css" rel="stylesheet">
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
 <body>
-    <div id="app">
+    <div id="app" style="height: 100vh">
         <nav class="navbar navbar-expand-md navbar-light bg-success shadow-sm">
             <div class="container">
                 <a class="navbar-brand text-light" href="{{ route('admin.admin') }}">
@@ -38,14 +39,33 @@
 
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ms-auto">
-                        <li class="nav-item">
-                            <a class="nav-link text-light" href="{{ route('admin.admin') }}">結果一覧へ</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-light" href="{{ route('admin.edit_subject') }}">問題編集へ</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-light" href="{{ route('admin.logout') }}"
+                        <!-- Authentication Links -->
+                        @guest
+                            @if (Route::has('admin.login'))
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('admin.login') }}">{{ __('Login') }}</a>
+                                </li>
+                            @endif
+
+                            @if (Route::has('admin.register'))
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('admin.register') }}">{{ __('Register') }}</a>
+                                </li>
+                            @endif
+                        @else
+                            <li class="nav-item dropdown">
+                                <a class="nav-link text-light" href="{{ route('admin.create_issue') }}"><p>問題作成画面へ</p></a>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link text-light" href="{{ route('admin.edit_subject') }}"><p>問題編集画面へ</p></a>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a id="navbarDropdown" class="nav-link dropdown-toggle text-light" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                    {{ Auth::user()->name }}
+                                </a>
+
+                                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="{{ route('admin.logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                                         {{ __('ログアウト') }}
@@ -54,13 +74,14 @@
                                     <form id="logout-form" action="{{ route('admin.logout') }}" method="POST" class="d-none">
                                         @csrf
                                     </form>
-                        </li>
+                                </div>
+                            </li>
+                        @endguest
                     </ul>
                 </div>
             </div>
         </nav>
-
-        <main>
+        <main class="#" style="padding-bottom: 50px">
             @yield('content')
         </main>
     </div>
