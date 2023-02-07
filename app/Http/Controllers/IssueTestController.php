@@ -19,6 +19,7 @@ class IssueTestController extends Controller
                     ->join('units', 'units.id', '=', 'unit_issues.unit_id')
                     ->join('issues', 'issues.id', '=', 'unit_issues.issue_id')
                     ->where('unit_id', $unit_id)
+                    ->whereNull('issues.deleted_at')
                     ->inRandomOrder()->limit(5)
                     ->get();
         $UnitId = $unit_id;

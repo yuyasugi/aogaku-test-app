@@ -18,8 +18,9 @@ class EditIssueController extends Controller
                     ->where('unit_id', '=', $unit_id)
                     ->join('units', 'units.id', '=', 'unit_issues.unit_id')
                     ->join('issues', 'issues.id', '=', 'unit_issues.issue_id')
+                    ->whereNull('issues.deleted_at')
                     ->get();
-                    
+
         return view('admin.edit_issue',compact(['Issue', 'UnitIssue']));
      }
 }

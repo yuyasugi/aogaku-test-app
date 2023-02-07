@@ -22,6 +22,7 @@ class ResultController extends Controller
         $issues = $issue->select()
                     ->join('unit_issues', 'unit_issues.issue_id', '=', 'issues.id')
                     ->where('unit_id', $request->unit_id)
+                    ->whereNull('issues.deleted_at')
                     ->get();
 
         foreach( $issues as $index => $issue){
@@ -38,6 +39,7 @@ class ResultController extends Controller
                 ->join('issue_results','issue_results.issue_id','=','issues.id')
                 ->where('correct',0)
                 ->where('result_id', $result->id)
+                ->whereNull('issues.deleted_at')
                 ->get();
 
             $issue_count = IssueResult::select()
