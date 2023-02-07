@@ -31,30 +31,21 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Auth::routes();
+// Auth::routes();
+Route::get('/login','Auth\LoginController@showLoginForm')->name('login.get');
+Route::post('login', 'Auth\LoginController@login')->name('login.post');
+Route::post('logout', 'Auth\LoginController@logout')->name('logout');
+Route::get('register', 'Auth\RegisterController@showRegistrationForm')->name('register');
+Route::post('register', 'Auth\RegisterController@register')->name('register');
+Route::get('password/reset', 'Auth\ForgotPasswordController@showLinkRequestForm')->name('password.request');
+Route::post('password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail')->name('password.email');
+Route::get('password/reset/{token}', 'Auth\ResetPasswordController@showResetForm')->name('password.reset');
+Route::post('password/reset', 'Auth\ResetPasswordController@reset')->name('password.update');
+
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-// Route::get('/', [HomeController::class, 'index'])->name('index');
-// Route::get('/home', [HomeController::class, 'index'])->name('home');
-
-Route::get('/login/admin', [App\Http\Controllers\Auth\LoginController::class, 'showAdminLoginForm']);
-Route::get('/register/admin', [App\Http\Controllers\Auth\RegisterController::class, 'showAdminRegisterForm']);
-
-Route::post('/login/admin', [App\Http\Controllers\Auth\LoginController::class, 'adminLogin']);
-Route::post('/register/admin', [App\Http\Controllers\Auth\RegisterController::class, 'registerAdmin'])->name('admin-register');
-
-Route::view('/admin', 'admin')->middleware('auth:admin')->name('admin-home');
-
-// Route::get('/login','Auth\LoginController@showLoginForm')->name('login.get');
-// Route::post('login', 'Auth\LoginController@login')->name('login.post');
-// Route::post('logout', 'Auth\LoginController@logout')->name('logout');
-// Route::get('register', 'Auth\RegisterController@showRegistrationForm')->name('register');
-// Route::post('register', 'Auth\RegisterController@register')->name('register');
-// Route::get('password/reset', 'Auth\ForgotPasswordController@showLinkRequestForm')->name('password.request');
-// Route::post('password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail')->name('password.email');
-// Route::get('password/reset/{token}', 'Auth\ResetPasswordController@showResetForm')->name('password.reset');
-// Route::post('password/reset', 'Auth\ResetPasswordController@reset')->name('password.update');
-
+Route::get('/', [HomeController::class, 'index'])->name('index');
+Route::get('/home', [HomeController::class, 'index'])->name('home');
 
 
 

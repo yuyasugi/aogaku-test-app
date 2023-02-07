@@ -23,7 +23,7 @@
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-success shadow-sm">
             <div class="container">
-                <a class="navbar-brand text-light" href="{{ route('user.login') }}">
+                <a class="navbar-brand text-light" href="{{ url('/') }}">
                     {{ config('app.name', 'Laravel') }}
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
@@ -37,47 +37,24 @@
                     </ul>
 
                     <!-- Right Side Of Navbar -->
-                    <ul class="navbar-nav ml-auto">
+                    <ul class="navbar-nav ms-auto">
                         <!-- Authentication Links -->
-                        @if(!Auth::check() && (!isset($authgroup) || !Auth::guard($authgroup)->check()))
-                            @if (Route::has('user.login'))
+                        @guest
+                            @if (Route::has('user.login.get'))
                                 <li class="nav-item">
-                                    @isset($authgroup)
-                                    <div>あああ</div>
-                                    <a class="nav-link" href="{{ url("login/$authgroup") }}">{{ __('Login') }}</a>
-                                    @else
-                                    <div>いいい</div>
-                                    <a class="nav-link" href="{{ route('user.login') }}">{{ __('Login') }}</a>
-                                    @endisset
+                                    <a class="nav-link text-light" href="{{ route('user.login.get') }}">{{ __('ログイン') }}</a>
                                 </li>
                             @endif
 
                             @if (Route::has('user.register'))
-                            @isset($authgroup)
-                            @if (Route::has("$authgroup-register"))
-                            <div>ううう</div>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ route("$authgroup-register") }}">{{ __('Register') }}</a>
+                                    <a class="nav-link text-light" href="{{ route('user.register') }}">{{ __('新規登録') }}</a>
                                 </li>
-                            @endif
-                            @else
-                            @if (Route::has('user.register'))
-                            <div>えええ</div>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('user.register') }}">{{ __('Register') }}</a>
-                                </li>
-                            @endif
-                            @endisset
                             @endif
                         @else
                             <li class="nav-item dropdown">
-                                <div>おおお</div>
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    @isset($authgroup)
-                                    {{ Auth::guard($authgroup)->user()->name }}
-                                    @else
+                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }}
-                                    @endisset
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">

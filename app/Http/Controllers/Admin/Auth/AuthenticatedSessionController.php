@@ -1,37 +1,37 @@
 <?php
 
-// namespace App\Http\Controllers\Admin\Auth;
+namespace App\Http\Controllers\Admin\Auth;
 
-// use App\Http\Controllers\Controller;
-// use App\Http\Requests\Auth\LoginRequest;
-// use App\Providers\RouteServiceProvider;
-// use Illuminate\Http\Request;
-// use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\Controller;
+use App\Http\Requests\Auth\LoginRequest;
+use App\Providers\RouteServiceProvider;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
-// class AuthenticatedSessionController extends Controller
-// {
-//     public function create()
-//     {
-//         return view('admin.login');
-//     }
+class AuthenticatedSessionController extends Controller
+{
+    public function create()
+    {
+        return view('admin.login');
+    }
 
-//     public function store(LoginRequest $request)
-//     {
-//         $request->authenticate();
+    public function store(LoginRequest $request)
+    {
+        $request->authenticate();
 
-//         $request->session()->regenerate();
+        $request->session()->regenerate();
 
-//         return redirect()->intended(RouteServiceProvider::ADMIN_HOME);
-//     }
+        return redirect()->intended(RouteServiceProvider::ADMIN_HOME);
+    }
 
-//     public function destroy(Request $request)
-//     {
-//         Auth::guard('admins')->logout();
+    public function destroy(Request $request)
+    {
+        Auth::guard('admins')->logout();
 
-//         $request->session()->invalidate();
+        $request->session()->invalidate();
 
-//         $request->session()->regenerateToken();
+        $request->session()->regenerateToken();
 
-//         return redirect('/admin/login');
-//     }
-// }
+        return redirect('/admin/login');
+    }
+}
