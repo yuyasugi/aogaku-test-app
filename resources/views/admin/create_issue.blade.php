@@ -26,7 +26,7 @@
             <p>問題文</p>
             <textarea class="form-control w-50" name="problem" rows="3"></textarea>
             <p>解答</p>
-            <input class="form-control w-50" type="text" name="anser">
+            <input class="form-control w-50" type="text" name="anser" autocomplete="off">
             <p>解説</p>
             <textarea class="form-control mb-3" name="commentary" rows="3"></textarea>
         </div>

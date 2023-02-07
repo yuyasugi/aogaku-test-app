@@ -16,7 +16,6 @@ class EditController extends Controller
                 ->join('unit_issues', 'unit_issues.issue_id', '=', 'issues.id')
                 ->where('issue_id', '=', $id)
                 ->first();
-        // $Units = Unit::find($id);
 
         return view('admin.edit',compact('Issue'));
      }

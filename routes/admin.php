@@ -63,6 +63,7 @@ Route::get('/edit_unit/{reference_book_id}', [EditUnitController::class, 'edit_u
 Route::get('/edit_issue/{unit_id}', [EditIssueController::class, 'edit_issue'])->middleware(['auth:admins'])->name('edit_issue');
 Route::get('/edit/{id}', [EditController::class, 'edit'])->middleware(['auth:admins'])->name('edit');
 Route::post('/update/{unit_id}', [UpdateController::class, 'update'])->middleware(['auth:admins'])->name('update');
+Route::post('/destroy/{unit_id}', [UpdateController::class, 'destroy'])->middleware(['auth:admins'])->name('destroy');
 
 
 

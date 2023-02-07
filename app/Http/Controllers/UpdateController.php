@@ -22,6 +22,23 @@ class UpdateController extends Controller
                     ->where('unit_id', '=', $unit_id)
                     ->join('units', 'units.id', '=', 'unit_issues.unit_id')
                     ->join('issues', 'issues.id', '=', 'unit_issues.issue_id')
+                    ->whereNull('issues.deleted_at')
+                    ->get();
+
+        return view('admin.edit_issue',compact('UnitIssue'));
+     }
+
+     public function destroy(Request $request, $unit_id){
+        $posts = $request->all();
+
+        Issue::where('id', $posts['issue_id'])->update(['deleted_at' => date("Y-m-d H:i:s", time())]);
+        // Issue::where('id', $posts['issue_id'])->delete();
+
+        $UnitIssue = UnitIssue::select()
+                    ->where('unit_id', '=', $unit_id)
+                    ->join('units', 'units.id', '=', 'unit_issues.unit_id')
+                    ->join('issues', 'issues.id', '=', 'unit_issues.issue_id')
+                    ->whereNull('issues.deleted_at')
                     ->get();
 
         return view('admin.edit_issue',compact('UnitIssue'));

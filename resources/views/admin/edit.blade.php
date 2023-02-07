@@ -12,7 +12,11 @@
         <textarea class="form-control mb-3" name="commentary" type="text" cols="30" rows="5">{{$Issue->commentary}}</textarea>
     </div>
     <input type="hidden" name="issue_id" value="{{ $Issue['id'] }}">
-    {{-- <input type="hidden" name="unit_id" value="{{ $Units['id'] }}"> --}}
     <button type="submit" class="btn btn-success">更新</button>
+</form>
+<form class="issue-box pt-3" action="{{ route('admin.destroy', $Issue->unit_id) }}" method="POST">
+    @csrf
+    <input type="hidden" name="issue_id" value="{{ $Issue['id'] }}">
+    <button type="submit" class="btn btn-success">削除</button>
 </form>
 @endsection
