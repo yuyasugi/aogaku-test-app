@@ -7,7 +7,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{ config('app.name', '青学コーチング') }}</title>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
@@ -15,16 +15,15 @@
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
-    <link href="https://use.fontawesome.com/releases/v6.1.1/css/all.css" rel="stylesheet">
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
 <body>
-    <div id="app" style="height: 100vh">
+    <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-success shadow-sm">
             <div class="container">
-                <a class="navbar-brand text-light" href="{{ url('/') }}">
+                <a class="navbar-brand text-light" href="{{ route('user.home') }}">
                     {{ config('app.name', 'Laravel') }}
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
@@ -38,24 +37,42 @@
                     </ul>
 
                     <!-- Right Side Of Navbar -->
-                    <ul class="navbar-nav ms-auto">
+                    <ul class="navbar-nav ml-auto">
                         <!-- Authentication Links -->
-                        @guest
-                            @if (Route::has('login'))
+                        @if(!Auth::check() && (!isset($authgroup) || !Auth::guard($authgroup)->check()))
+                            @if (Route::has('user.login'))
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                                    @isset($authgroup)
+                                    <a class="nav-link" href="{{ url("login/$authgroup") }}">{{ __('Login') }}</a>
+                                    @else
+                                    <a class="nav-link" href="{{ route('user.login') }}">{{ __('Login') }}</a>
+                                    @endisset
                                 </li>
                             @endif
 
-                            @if (Route::has('register'))
+                            @if (Route::has('user.register'))
+                            @isset($authgroup)
+                            @if (Route::has("$authgroup-register"))
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                                    <a class="nav-link" href="{{ route("$authgroup-register") }}">{{ __('Register') }}</a>
                                 </li>
+                            @endif
+                            @else
+                            @if (Route::has('user.register'))
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('user.register') }}">{{ __('Register') }}</a>
+                                </li>
+                            @endif
+                            @endisset
                             @endif
                         @else
                             <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle text-light" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                    @isset($authgroup)
+                                    {{ Auth::guard($authgroup)->user()->name }}
+                                    @else
                                     {{ Auth::user()->name }}
+                                    @endisset
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
