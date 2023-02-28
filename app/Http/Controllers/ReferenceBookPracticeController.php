@@ -10,7 +10,13 @@ use Illuminate\Support\Facades\DB;
 class ReferenceBookPracticeController extends Controller
 {
     public function reference_practice($subject_id){
-        $ReferenceBookPractice = ReferenceBook::where('subject_id', '=', $subject_id)->get();
-        return view('reference_book_practice',compact('ReferenceBookPractice'));
+        $referenceBookPractice = ReferenceBook::where('subject_id', '=', $subject_id)->get();
+        return response()->json(
+            [
+                "referenceBookPractice" => $referenceBookPractice
+             ],
+             200,[],
+             JSON_UNESCAPED_UNICODE //文字化け対策
+            );
      }
 }

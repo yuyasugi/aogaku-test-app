@@ -10,7 +10,13 @@ use Illuminate\Support\Facades\DB;
 class ReferenceBookTestController extends Controller
 {
     public function reference_test($subject_id){
-        $ReferenceBookTest = ReferenceBook::where('subject_id', '=', $subject_id)->get();
-        return view('reference_book_test',compact('ReferenceBookTest'));
+        $referenceBookTest = ReferenceBook::where('subject_id', '=', $subject_id)->get();
+        return response()->json(
+            [
+                "referenceBookTest" => $referenceBookTest
+             ],
+             200,[],
+             JSON_UNESCAPED_UNICODE //文字化け対策
+            );
      }
 }

@@ -12,11 +12,17 @@ class EditController extends Controller
 {
     public function edit($id){
 
-        $Issue = Issue::find($id)
+        $issue = Issue::find($id)
                 ->join('unit_issues', 'unit_issues.issue_id', '=', 'issues.id')
                 ->where('issue_id', '=', $id)
                 ->first();
 
-        return view('admin.edit',compact('Issue'));
+                return response()->json(
+                    [
+                        "issue" => $issue
+                     ],
+                     200,[],
+                     JSON_UNESCAPED_UNICODE //文字化け対策
+                    );
      }
 }

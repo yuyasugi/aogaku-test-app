@@ -10,7 +10,13 @@ use Illuminate\Support\Facades\DB;
 class EditReferenceBookController extends Controller
 {
     public function edit_reference($subject_id){
-        $EditReferenceBook = ReferenceBook::where('subject_id', '=', $subject_id)->get();
-        return view('admin.edit_reference_book',compact('EditReferenceBook'));
+        $editReferenceBook = ReferenceBook::where('subject_id', '=', $subject_id)->get();
+        return response()->json(
+            [
+                "editReferenceBook" => $editReferenceBook
+             ],
+             200,[],
+             JSON_UNESCAPED_UNICODE //文字化け対策
+            );
      }
 }

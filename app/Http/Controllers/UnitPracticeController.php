@@ -11,7 +11,13 @@ use Illuminate\Support\Facades\DB;
 class UnitPracticeController extends Controller
 {
     public function unit_practice($reference_book_id){
-        $UnitPractice = Unit::where('reference_book_id', '=', $reference_book_id)->get();
-        return view('unit_practice',compact('UnitPractice'));
+        $unitPractice = Unit::where('reference_book_id', '=', $reference_book_id)->get();
+        return response()->json(
+            [
+                "unitPractice" => $unitPractice
+             ],
+             200,[],
+             JSON_UNESCAPED_UNICODE //文字化け対策
+            );
      }
 }

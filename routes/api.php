@@ -3,7 +3,27 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\SubjectTestController;
+use App\Http\Controllers\ReferenceBookTestController;
+use App\Http\Controllers\UnitTestController;
+use App\Http\Controllers\IssueTestController;
+
 use App\Http\Controllers\SubjectPracticeController;
+use App\Http\Controllers\ReferenceBookPracticeController;
+use App\Http\Controllers\UnitPracticeController;
+use App\Http\Controllers\IssueController;
+
+
+use App\Http\Controllers\AdminUserController;
+use App\Http\Controllers\UserResultController;
+use App\Http\Controllers\EditSubjectController;
+use App\Http\Controllers\EditReferenceBookController;
+use App\Http\Controllers\EditUnitController;
+use App\Http\Controllers\EditIssueController;
+use App\Http\Controllers\EditController;
+
+
+
 
 /*
 |--------------------------------------------------------------------------
@@ -20,4 +40,25 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+Route::get('/subject_test', [SubjectTestController::class, 'subject_test'])->name('subject_test');
+Route::get('/reference_book_test/{subject_id}', [ReferenceBookTestController::class, 'reference_test'])->name('reference_book_test');
+Route::get('/unit_test/{reference_book_id}', [UnitTestController::class, 'unit_test'])->name('unit_test');
+Route::get('/issue_test/{unit_id}', [IssueTestController::class, 'issue_test'])->name('issue_test');
+
 Route::get('/subject_practice', [SubjectPracticeController::class, 'subject_practice'])->name('subject_practice');
+Route::get('/reference_book_practice/{subject_id}', [ReferenceBookPracticeController::class, 'reference_practice'])->name('reference_book_practice');
+Route::get('/unit_practice/{reference_book_id}', [UnitPracticeController::class, 'unit_practice'])->name('unit_practice');
+Route::get('/issue/{unit_id}', [IssueController::class, 'issue'])->name('issue');
+
+
+Route::get('/admin', [AdminUserController::class, 'user'])->name('admin');
+Route::get('/user_result/{user_id}', [UserResultController::class, 'user_result'])->name('user_result');
+Route::get('/edit_subject', [EditSubjectController::class, 'edit_subject'])->name('edit_subject');
+Route::get('/edit_reference_book/{subject_id}', [EditReferenceBookController::class, 'edit_reference'])->name('edit_reference_book');
+Route::get('/edit_unit/{reference_book_id}', [EditUnitController::class, 'edit_unit'])->name('edit_unit');
+Route::get('/edit_issue/{unit_id}', [EditIssueController::class, 'edit_issue'])->name('edit_issue');
+Route::get('/edit/{id}', [EditController::class, 'edit'])->name('edit');
+
+
+
+

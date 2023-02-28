@@ -14,14 +14,22 @@ class IssueController extends Controller
         $issue = new Issue;
         $Issue = $issue->get_all_issue();
 
-        $UnitIssue = UnitIssue::select()
+        $unitIssue = UnitIssue::select()
                     ->where('unit_id', '=', $unit_id)
                     ->join('units', 'units.id', '=', 'unit_issues.unit_id')
                     ->join('issues', 'issues.id', '=', 'unit_issues.issue_id')
                     ->where('unit_id', $unit_id)
                     ->whereNull('issues.deleted_at')
                     ->get();
-        $UnitId = $unit_id;
-        return view('issue',compact(['Issue', 'UnitIssue', 'UnitId']));
+        $unitId = $unit_id;
+        return response()->json(
+            [
+                "Issue" => $Issue,
+                "unitIssue" => $unitIssue,
+                "unitId" => $unitId
+             ],
+             200,[],
+             JSON_UNESCAPED_UNICODE //文字化け対策
+            );
      }
 }

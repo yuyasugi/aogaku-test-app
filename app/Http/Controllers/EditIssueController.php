@@ -14,13 +14,20 @@ class EditIssueController extends Controller
         $issue = new Issue;
         $Issue = $issue->get_all_issue();
 
-        $UnitIssue = UnitIssue::select()
+        $unitIssue = UnitIssue::select()
                     ->where('unit_id', '=', $unit_id)
                     ->join('units', 'units.id', '=', 'unit_issues.unit_id')
                     ->join('issues', 'issues.id', '=', 'unit_issues.issue_id')
                     ->whereNull('issues.deleted_at')
                     ->get();
 
-        return view('admin.edit_issue',compact(['Issue', 'UnitIssue']));
+        return response()->json(
+            [
+                "Issue" => $Issue,
+                "unitIssue" => $unitIssue
+             ],
+             200,[],
+             JSON_UNESCAPED_UNICODE //文字化け対策
+            );
      }
 }
