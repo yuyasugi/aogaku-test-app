@@ -34,6 +34,14 @@ class UserResultController extends Controller
                                         ->where('result_id', $result->id)
                                         ->where('correct', '=', 1)->count();
             };
-            return view('admin.user_result',compact(['user', 'results','Users']));
+            return response()->json(
+                [
+                    "Users" => $Users,
+                    "user" => $user,
+                    "results" => $results
+                 ],
+                 200,[],
+                 JSON_UNESCAPED_UNICODE //文字化け対策
+                );
     }
 }

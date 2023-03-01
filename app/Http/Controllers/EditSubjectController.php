@@ -9,7 +9,14 @@ use Illuminate\Support\Facades\DB;
 class EditSubjectController extends Controller
 {
     public function edit_subject(){
-        $EditSubject = DB::table('subjects')->get();
-        return view('admin.edit_subject',compact('EditSubject'));
-     }
+        $editSubject = DB::table('subjects')->get();
+
+        return response()->json(
+            [
+                "editSubject" => $editSubject
+             ],
+             200,[],
+             JSON_UNESCAPED_UNICODE //文字化け対策
+            );
+           }
 }

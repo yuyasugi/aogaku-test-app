@@ -11,7 +11,13 @@ use Illuminate\Support\Facades\DB;
 class EditUnitController extends Controller
 {
     public function edit_unit($reference_book_id){
-        $EditUnit = Unit::where('reference_book_id', '=', $reference_book_id)->get();
-        return view('admin.edit_unit',compact('EditUnit'));
+        $editUnit = Unit::where('reference_book_id', '=', $reference_book_id)->get();
+        return response()->json(
+            [
+                "editUnit" => $editUnit
+             ],
+             200,[],
+             JSON_UNESCAPED_UNICODE //文字化け対策
+            );
      }
 }

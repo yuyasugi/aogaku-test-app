@@ -9,7 +9,14 @@ use Illuminate\Support\Facades\DB;
 class SubjectPracticeController extends Controller
 {
     public function subject_practice(){
-        $SubjectPractice = DB::table('subjects')->get();
-        return view('subject_practice',compact('SubjectPractice'));
-     }
+        $subjectPractice = DB::table('subjects')->get();
+
+     return response()->json(
+        [
+            "subjectPractice" => $subjectPractice
+         ],
+         200,[],
+         JSON_UNESCAPED_UNICODE //文字化け対策
+        );
+       }
 }

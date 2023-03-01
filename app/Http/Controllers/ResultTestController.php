@@ -35,19 +35,27 @@ class ResultTestController extends Controller
             };
 
             //間違えた問題のみ表示する
-            $issue_result = Issue::select()
+            $issueResult = Issue::select()
                 ->join('issue_results','issue_results.issue_id','=','issues.id')
                 ->where('correct',0)
                 ->where('result_id', $result->id)
                 ->get();
 
-            $issue_count = IssueResult::select()
+            $issueCount = IssueResult::select()
                             ->where('result_id', $result->id)
                             ->count('correct');
             $score = IssueResult::select()
                             ->where('result_id', $result->id)
                             ->where('correct', '=', 1)->count();
 
-            return view('result',compact(['issue_result', 'issue_count', 'score']));
+        return response()->json(
+            [
+                "issueResult" => $issueResult,
+                "issueCount" => $issueCount,
+                "score" => $score
+                ],
+                200,[],
+                JSON_UNESCAPED_UNICODE //文字化け対策
+            );
      }
 }
