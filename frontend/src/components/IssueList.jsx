@@ -11,25 +11,41 @@ import styled from "styled-components";
         const url = `http://localhost:8888/api/issue/${unit_id}`;
         const [issueList, setIssueList] = useState([])
 
-        const [value, setValue] = useState([])
-        const handleEditFormChange = (e) => {
-            console.log({value})
-            setValue([e.target.value]);
+        const [answers, setAnswers] = useState([])
+
+        const onChangeInput = (answer, issueId) => {
+            console.log('answers', answers)
+            console.log('answer', answer)
+            console.log('issueId', issueId)
+            console.log('answers', answers)
+        setAnswers([{issueId, answer}, ...answers.filter((a) => a.issueId !== issueId )] );
           }
 
-        useEffect(()=>{
-            (async ()=>{
-            try{
-                const res = await axios.get(url);
-            console.log(res.data.unitIssue);
-            setIssueList(res.data.unitIssue)
-                return;
-            }catch (e){
-                return e;
-            }
-            })();
-        },[]);
-        console.log("issueList",issueList);
+        const onClickAdd = async () => {
+            console.log(answers);
+            // const res = await axios.post(`http://localhost:8888/api/result`,{answers})
+
+        }
+
+        useEffect(() => {
+            ;(async () => {
+            try {
+                const res = await axios.get(url)
+                setIssueList(res.data.unitIssue)
+                console.log("res",res)
+                setAnswers(
+                  res.data.unitIssue.map((issue) => {
+                    return {
+                      issueId: issue.id,
+                      answer: null,
+                    }
+                  })
+                )
+              } catch (e) {
+                return e
+              }
+            })()
+          }, [])
 
     return  (
         <ChakraProvider>
@@ -41,14 +57,13 @@ import styled from "styled-components";
             return (
                 <>
                     <FormLabel>{s.problem}</FormLabel>
-                    <Input onChange={(e) => setValue(e.target.value)} type='text' focusBorderColor='lime' placeholder='解答を入力してください' bg='whiteAlpha.800' my={2} width='99%' />
+                    <Input onChange={(e) => onChangeInput(e.target.value, s.id)} type='text' focusBorderColor='lime' placeholder='解答を入力してください' bg='whiteAlpha.800' my={2} width='99%' />
                 </>
                     )})}
-                    {/* <Input type="hidden" value={value}/> */}
-                    <Button mt={4} colorScheme="teal" onClick={handleEditFormChange}>
-                        Submit
+                    <Button mt={4} colorScheme="teal" onClick={onClickAdd} type="submit">
+                        解答する
                     </Button>
-                    </FormControl>
+                </FormControl>
                 </>
             </SContainer>
         </ChakraProvider>

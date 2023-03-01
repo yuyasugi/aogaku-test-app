@@ -17,6 +17,8 @@ import { AdminEditReferenceBookList } from "./components/AdminEditReferenceBookL
 import { AdminEditUnitList } from "./components/AdminEditUnitList";
 import { AdminEditIssueList } from "./components/AdminEditIssueList";
 import { AdminEditProblem } from "./components/AdminEditProblem";
+import { Result } from "./components/Result";
+import { ResultTest } from "./components/ResultTest";
 
 const App = () => {
 
@@ -55,6 +57,13 @@ const App = () => {
             </Route>
             <Route path="/issue/:unit_id">
                 <IssueList />
+            </Route>
+
+            <Route path="/result">
+                <Result />
+            </Route>
+            <Route path="/result_test">
+                <ResultTest />
             </Route>
 
 

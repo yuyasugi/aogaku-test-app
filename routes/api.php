@@ -7,11 +7,12 @@ use App\Http\Controllers\SubjectTestController;
 use App\Http\Controllers\ReferenceBookTestController;
 use App\Http\Controllers\UnitTestController;
 use App\Http\Controllers\IssueTestController;
-
 use App\Http\Controllers\SubjectPracticeController;
 use App\Http\Controllers\ReferenceBookPracticeController;
 use App\Http\Controllers\UnitPracticeController;
 use App\Http\Controllers\IssueController;
+use App\Http\Controllers\ResultController;
+use App\Http\Controllers\ResultTestController;
 
 
 use App\Http\Controllers\AdminUserController;
@@ -49,6 +50,8 @@ Route::get('/subject_practice', [SubjectPracticeController::class, 'subject_prac
 Route::get('/reference_book_practice/{subject_id}', [ReferenceBookPracticeController::class, 'reference_practice'])->name('reference_book_practice');
 Route::get('/unit_practice/{reference_book_id}', [UnitPracticeController::class, 'unit_practice'])->name('unit_practice');
 Route::get('/issue/{unit_id}', [IssueController::class, 'issue'])->name('issue');
+Route::post('/result', [ResultController::class, 'result'])->name('result');
+Route::post('/result_test', [ResultTestController::class, 'result_test'])->name('result_test');
 
 
 Route::get('/admin', [AdminUserController::class, 'user'])->name('admin');
