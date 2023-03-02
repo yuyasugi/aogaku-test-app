@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom"
+import { useParams, useHistory } from "react-router-dom"
 import axios from "axios";
 import { Button, ChakraProvider, FormControl, FormLabel, Input } from "@chakra-ui/react";
 import { HeaderUser } from "./organizm/HeaderUser";
@@ -9,22 +9,24 @@ import styled from "styled-components";
     export const IssueList = () => {
         const { unit_id } = useParams();
         const url = `http://localhost:8888/api/issue/${unit_id}`;
+
         const [issueList, setIssueList] = useState([])
 
         const [answers, setAnswers] = useState([])
 
         const onChangeInput = (answer, issueId) => {
             console.log('answers', answers)
-            console.log('answer', answer)
-            console.log('issueId', issueId)
-            console.log('answers', answers)
+            // console.log('answer', answer)
+            // console.log('issueId', issueId)
         setAnswers([{issueId, answer}, ...answers.filter((a) => a.issueId !== issueId )] );
           }
 
+          const history = useHistory();
+
         const onClickAdd = async () => {
             console.log(answers);
-            // const res = await axios.post(`http://localhost:8888/api/result`,{answers})
-
+            // history.push('/result');
+            await axios.post(`http://localhost:8888/api/result`,{answers})
         }
 
         useEffect(() => {
@@ -32,12 +34,13 @@ import styled from "styled-components";
             try {
                 const res = await axios.get(url)
                 setIssueList(res.data.unitIssue)
-                console.log("res",res)
+                // console.log("res",res)
                 setAnswers(
                   res.data.unitIssue.map((issue) => {
                     return {
                       issueId: issue.id,
                       answer: null,
+                      unit_id: unit_id
                     }
                   })
                 )
