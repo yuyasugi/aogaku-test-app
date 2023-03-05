@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\DB;
 class ResultTestController extends Controller
 {
     public function result_test(Request $request){
-        $result = Result::create(['unit_id' => $request->unit_id, 'user_id' => \Auth::id()]);
+        $result = Result::create(['unit_id' => $request->unit_id, 'user_id' => 1]);
         $issue = new Issue;
         $posts = $request->except(['_token', 'unit_id']);
         $keys = array_keys($posts);
@@ -25,12 +25,14 @@ class ResultTestController extends Controller
             return $issue->find($posts);
            }, $keys);
 
-        foreach( $issues as $index => $issue){
-            $correct =  $issue->anser === $posts[$issue->id];
+           foreach( $request->answers as $index => $answer){
+            // return response()->json($issue->find($answer['issueId'])->anser);
+            $issueId = $answer['issueId'];
+            $correct =  $issue->find($issueId)->anser === $answer['answer'];
             if($correct == true){
-                IssueResult::create(['issue_id' => $issue->id, 'correct'=> true, 'result_id' => $result->id]);
+                IssueResult::create(['issue_id' => $issueId, 'correct'=> true, 'result_id' => $result->id]);
                 } else{
-                    IssueResult::create(['issue_id' => $issue->id,'correct'=> false, 'result_id' => $result->id]);
+                    IssueResult::create(['issue_id' => $issueId,'correct'=> false, 'result_id' => $result->id]);
                 }
             };
 

@@ -16,21 +16,17 @@ use Illuminate\Support\Facades\DB;
 class ResultController extends Controller
 {
     public function result(Request $request){
-        $result = Result::create(['unit_id' => $request->unit_id, 'user_id' => \Auth::id()]);
+        $result = Result::create(['unit_id' => $request->unit_id, 'user_id' => 1]);
         $issue = new Issue;
-        $posts = $request->all();
-        $issues = $issue->select()
-                    ->join('unit_issues', 'unit_issues.issue_id', '=', 'issues.id')
-                    ->where('unit_id', $request->unit_id)
-                    ->whereNull('issues.deleted_at')
-                    ->get();
 
-        foreach( $issues as $index => $issue){
-            $correct =  $issue->anser === $posts[$issue->id];
+        foreach( $request->answers as $index => $answer){
+            // return response()->json($issue->find($answer['issueId'])->anser);
+            $issueId = $answer['issueId'];
+            $correct =  $issue->find($issueId)->anser === $answer['answer'];
             if($correct == true){
-                IssueResult::create(['issue_id' => $issue->id, 'correct'=> true, 'result_id' => $result->id]);
+                IssueResult::create(['issue_id' => $issueId, 'correct'=> true, 'result_id' => $result->id]);
                 } else{
-                    IssueResult::create(['issue_id' => $issue->id,'correct'=> false, 'result_id' => $result->id]);
+                    IssueResult::create(['issue_id' => $issueId,'correct'=> false, 'result_id' => $result->id]);
                 }
             };
 
@@ -49,14 +45,14 @@ class ResultController extends Controller
                             ->where('result_id', $result->id)
                             ->where('correct', '=', 1)->count();
 
-        return response()->json(
-            [
-                "issueResult" => $issueResult,
-                "issueCount" => $issueCount,
-                "score" => $score
-                ],
-                200,[],
-                JSON_UNESCAPED_UNICODE //文字化け対策
-            );
+            return response()->json(
+                [
+                    "issueResult" => $issueResult,
+                    "issueCount" => $issueCount,
+                    "score" => $score
+                    ],
+                    200,[],
+                    JSON_UNESCAPED_UNICODE //文字化け対策
+                );
      }
 }
