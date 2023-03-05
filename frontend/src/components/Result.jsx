@@ -3,7 +3,7 @@ import axios from "axios";
 
 
     export const Result = () => {
-        const url = "http://localhost:8888/api/result";
+        const url = `http://localhost:8888/api/result`;
         const [result, setResult] = useState([])
         useEffect(()=>{
             (async ()=>{
