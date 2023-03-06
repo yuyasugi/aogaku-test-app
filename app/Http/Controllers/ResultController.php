@@ -16,11 +16,11 @@ use Illuminate\Support\Facades\DB;
 class ResultController extends Controller
 {
     public function result(Request $request){
+        return response()->json($request);
         $result = Result::create(['unit_id' => $request->unit_id, 'user_id' => 1]);
         $issue = new Issue;
 
         foreach( $request->answers as $index => $answer){
-            // return response()->json($issue->find($answer['issueId'])->anser);
             $issueId = $answer['issueId'];
             $correct =  $issue->find($issueId)->anser === $answer['answer'];
             if($correct == true){

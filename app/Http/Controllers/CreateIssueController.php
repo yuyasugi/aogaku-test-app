@@ -12,7 +12,15 @@ class CreateIssueController extends Controller
         $createSubjects = DB::table('subjects')->get();
         $createReferenceBooks = DB::table('reference_books')->get();
         $createUnits = DB::table('units')->get();
-        return view('admin.create_issue', compact(['createSubjects', 'createReferenceBooks', 'createUnits']));
+        return response()->json(
+            [
+                "createSubjects" => $createSubjects,
+                "createReferenceBooks" => $createReferenceBooks,
+                "createUnits" => $createUnits
+                ],
+                200,[],
+                JSON_UNESCAPED_UNICODE //文字化け対策
+            );
      }
 }
 

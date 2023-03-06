@@ -14,6 +14,7 @@ use App\Models\UnitIssue;
 class StoreController extends Controller
 {
     public function store(Request $request){
+        return response()->json($request);
         $posts = $request->all();
         $createSubjects = DB::table('subjects')->get();
         $createReferenceBooks = DB::table('reference_books')->get();
@@ -27,6 +28,14 @@ class StoreController extends Controller
 
         });
 
-        return view('admin.create_issue', compact(['createSubjects', 'createReferenceBooks', 'createUnits']));
+        return response()->json(
+            [
+                "createSubjects" => $createSubjects,
+                "createReferenceBooks" => $createReferenceBooks,
+                "createUnits" => $createUnits
+                ],
+                200,[],
+                JSON_UNESCAPED_UNICODE //文字化け対策
+            );
      }
 }
