@@ -13,34 +13,12 @@ use App\Models\UnitIssue;
 
 class UpdateController extends Controller
 {
-    public function update(Request $request, $unit_id){
-        $posts = $request->all();
-
-        Issue::where('id', $posts['issue_id'])->update(['problem' => $posts['problem'], 'anser' => $posts['anser'], 'commentary' => $posts['commentary']]);
-
-        $UnitIssue = UnitIssue::select()
-                    ->where('unit_id', '=', $unit_id)
-                    ->join('units', 'units.id', '=', 'unit_issues.unit_id')
-                    ->join('issues', 'issues.id', '=', 'unit_issues.issue_id')
-                    ->whereNull('issues.deleted_at')
-                    ->get();
-
-        return view('admin.edit_issue',compact('UnitIssue'));
+    public function update(Request $request){
+        return response()->json($request);
+        Issue::where('id', $request->id)->update(['problem' => $request->editProblem, 'anser' => $request->editAnser, 'commentary' => $request->editCommentary]);
      }
 
-     public function destroy(Request $request, $unit_id){
-        $posts = $request->all();
-
-        Issue::where('id', $posts['issue_id'])->update(['deleted_at' => date("Y-m-d H:i:s", time())]);
-        // Issue::where('id', $posts['issue_id'])->delete();
-
-        $UnitIssue = UnitIssue::select()
-                    ->where('unit_id', '=', $unit_id)
-                    ->join('units', 'units.id', '=', 'unit_issues.unit_id')
-                    ->join('issues', 'issues.id', '=', 'unit_issues.issue_id')
-                    ->whereNull('issues.deleted_at')
-                    ->get();
-
-        return view('admin.edit_issue',compact('UnitIssue'));
+     public function destroy(Request $request){
+        Issue::where('id', $request->id)->update(['deleted_at' => date("Y-m-d H:i:s", time())]);
      }
 }

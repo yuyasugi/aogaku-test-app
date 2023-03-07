@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Box, Button, keyframes } from "@chakra-ui/react";
+import { Button } from "@chakra-ui/react";
 import styled from "styled-components";
 
     export const SelectButton = (props) => {
@@ -9,7 +9,7 @@ import styled from "styled-components";
             <Button
             as='a'
             href={URL}
-            mx='14' my='5'
+            mx='10' my='5'
             borderRadius='10px'
             borderWidth='1px'
             bg='white'

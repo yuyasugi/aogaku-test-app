@@ -24,6 +24,7 @@ use App\Http\Controllers\EditUnitController;
 use App\Http\Controllers\EditIssueController;
 use App\Http\Controllers\EditController;
 use App\Http\Controllers\StoreController;
+use App\Http\Controllers\UpdateController;
 
 /*
 |--------------------------------------------------------------------------
@@ -62,6 +63,8 @@ Route::get('/edit_reference_book/{subject_id}', [EditReferenceBookController::cl
 Route::get('/edit_unit/{reference_book_id}', [EditUnitController::class, 'edit_unit'])->name('edit_unit');
 Route::get('/edit_issue/{unit_id}', [EditIssueController::class, 'edit_issue'])->name('edit_issue');
 Route::get('/edit/{id}', [EditController::class, 'edit'])->name('edit');
+Route::post('/update', [UpdateController::class, 'update'])->name('update');
+Route::post('/destroy', [UpdateController::class, 'destroy'])->name('destroy');
 
 
 

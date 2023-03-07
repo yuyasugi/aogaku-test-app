@@ -47,4 +47,5 @@ import { SelectButton } from "./organizm/SelectButton";
     background-color: rgba(1, 75, 21, 40%);
     height: 200vh;
     width: 100%;
+    display: flex;
     `

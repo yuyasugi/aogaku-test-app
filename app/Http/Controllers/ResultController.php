@@ -16,7 +16,6 @@ use Illuminate\Support\Facades\DB;
 class ResultController extends Controller
 {
     public function result(Request $request){
-        return response()->json($request);
         $result = Result::create(['unit_id' => $request->unit_id, 'user_id' => 1]);
         $issue = new Issue;
 

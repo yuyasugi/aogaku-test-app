@@ -1,7 +1,6 @@
 import React from "react";
 import styled from "styled-components";
 
-import { HeaderUser } from "./organizm/HeaderUser";
 import { Button, ChakraProvider } from "@chakra-ui/react";
 import { useHistory } from "react-router-dom";
 
@@ -19,6 +18,7 @@ import { useHistory } from "react-router-dom";
         return(
             <ChakraProvider>
                 <SContainer>
+                    <SBox>
                     <STextBox>
                     <STitle>青学コーチング</STitle>
                     <SSabTitle>テストツール</SSabTitle>
@@ -31,15 +31,31 @@ import { useHistory } from "react-router-dom";
                         練習問題を解く
                     </Button>
                     </SButtonBox>
+                    </SBox>
                 </SContainer>
             </ChakraProvider>
         )
     }
 
     const SContainer = styled.div`
-    background-color: rgba(1, 75, 21, 85%);
+    position: relative;
+    background-image: url(https://cdn.pixabay.com/photo/2015/07/19/10/00/school-work-851328__480.jpg);
+    background-position: center;
     height: 100vh;
     width: 100%;
+    animation: fadein 2s forwards;
+
+    @keyframes fadein {
+        0% {opacity: 0}
+        100% {opacity: 1}
+    }
+    `
+
+    const SBox = styled.div`
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background-color: rgba(1, 75, 21,0.5);
     `
 
     const STextBox = styled.div`
@@ -48,8 +64,11 @@ import { useHistory } from "react-router-dom";
     `
 
     const SButtonBox = styled.div`
-    text-align: center;
-    padding-top: 7%;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    padding-top:7%;
     `
 
     const STitle = styled.h1`
