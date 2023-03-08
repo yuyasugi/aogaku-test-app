@@ -28,6 +28,7 @@ import { Button, ChakraProvider, FormControl, FormLabel, Input, Textarea } from 
         const { showMessage } = Message();
 
         const onClickEdit = async () => {
+            console.log({editProblem, editAnser, editCommentary, id});
             const res = await axios.post(`http://localhost:8888/api/update`,{editProblem, editAnser, editCommentary, id});
             console.log(res);
             showMessage({ title: "編集が完了しました", status: "success" });
@@ -45,13 +46,10 @@ import { Button, ChakraProvider, FormControl, FormLabel, Input, Textarea } from 
             try{
                 const res = await axios.get(url);
             console.log(res.data.issue);
+            console.log(res.data.issue.anser);
             setAdminEditProblem(res.data.issue)
             setEditProblem(
-                res.data.issue.map((issue) => {
-                    return{
-                        editProblem: issue.problem
-                    }
-                })
+                res.data.issue.problem
             )
             }catch (e){
                 return e;
