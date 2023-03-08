@@ -1,4 +1,5 @@
 import React from "react";
+import ReactDOM from 'react-dom';
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 
 import { Home } from "./components/Home";
@@ -19,6 +20,20 @@ import { AdminEditIssueList } from "./components/AdminEditIssueList";
 import { AdminEditProblem } from "./components/AdminEditProblem";
 import { Result } from "./components/Result";
 import { ResultTest } from "./components/ResultTest";
+import GlobalNav from "./components/GlobalNav";
+import Register from "./components/Register";
+import Login from "./components/Login";
+import axios from 'axios';
+
+axios.defaults.baseURL = "http://localhost:8000/";
+axios.defaults.headers.post['Content-Type'] = 'application/json';
+axios.defaults.headers.post['Accept'] = 'application/json';
+axios.defaults.withCredentials = true;
+axios.interceptors.request.use(function(config){
+    const token = localStorage.getItem('auth_token');
+    config.headers.Authorization = token ? `Bearer ${token}` : '';
+    return config;
+});
 
 const App = () => {
 
@@ -26,9 +41,17 @@ const App = () => {
     <BrowserRouter>
         <div className="App">
         </div>
+        <GlobalNav />
         <Switch>
             <Route exact path="/">
                 <Home />
+            </Route>
+
+            <Route path="/register">
+                <Register />
+            </Route>
+            <Route path="/login">
+                <Login />
             </Route>
 
             <Route path="/subject_test">
@@ -92,6 +115,10 @@ const App = () => {
         </Switch>
     </BrowserRouter>
   );
+}
+
+if (document.getElementById('nav')) {
+    ReactDOM.render(<App />, document.getElementById('nav'));
 }
 
 export default App;

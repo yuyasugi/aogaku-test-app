@@ -27,9 +27,9 @@ use App\Http\Controllers\ResultTestController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/{any}', function () {
+    return view('index');
+})->where('any', '.*');
 
 // Auth::routes();
 Route::get('/login','Auth\LoginController@showLoginForm')->name('login.get');
