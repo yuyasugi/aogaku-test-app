@@ -1,10 +1,9 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import {Link, useHistory} from 'react-router-dom';
 import axios from 'axios';
 import swal from 'sweetalert';
 
 function GlobalNav () {
-
     const history = useHistory();
 
     const logoutSubmit = (e) => {
@@ -16,7 +15,6 @@ function GlobalNav () {
                 localStorage.removeItem('auth_name', res.data.username);
                 swal("ログアウトしました", res.data.message, "success");
                 history.push('/');
-                Location.reload();
             }
         });
     }
