@@ -51,6 +51,12 @@ import { Button, ChakraProvider, FormControl, FormLabel, Input, Textarea } from 
             setEditProblem(
                 res.data.issue.problem
             )
+            setEditAnser(
+                res.data.issue.anser
+            )
+            setEditCommentary(
+                res.data.issue.commentary
+            )
             }catch (e){
                 return e;
             }

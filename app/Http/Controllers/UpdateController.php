@@ -14,7 +14,7 @@ use App\Models\UnitIssue;
 class UpdateController extends Controller
 {
     public function update(Request $request){
-        return response()->json($request);
+        // return response()->json($request);
         Issue::where('id', $request->id)->update(['problem' => $request->editProblem, 'anser' => $request->editAnser, 'commentary' => $request->editCommentary]);
      }
 
