@@ -41,6 +41,7 @@ class ResultTestController extends Controller
                 ->join('issue_results','issue_results.issue_id','=','issues.id')
                 ->where('correct',0)
                 ->where('result_id', $result->id)
+                ->whereNull('issues.deleted_at')
                 ->get();
 
             $issueCount = IssueResult::select()

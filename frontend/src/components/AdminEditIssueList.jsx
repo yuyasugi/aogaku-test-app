@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom"
 import axios from "axios";
+import { Box, Link } from "@chakra-ui/react";
 
 
     export const AdminEditIssueList = () => {
@@ -22,11 +23,11 @@ import axios from "axios";
         console.log("adminEditIssueList",adminEditIssueList);
 
     return  (
-        <div>
+        <Box>
         {adminEditIssueList.map((s) => {
             return (
-            <div>{s.problem}</div>
+            <Link href={`http://localhost:3000/admin/edit/${s.id}`}>{s.problem}</Link>
             )})}
-        </div>
+        </Box>
         )
     }

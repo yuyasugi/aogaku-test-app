@@ -20,7 +20,6 @@ class ResultController extends Controller
         $issue = new Issue;
 
         foreach( $request->answers as $index => $answer){
-            // return response()->json($issue->find($answer['issueId'])->anser);
             $issueId = $answer['issueId'];
             $correct =  $issue->find($issueId)->anser === $answer['answer'];
             if($correct == true){

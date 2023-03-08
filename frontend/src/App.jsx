@@ -19,6 +19,7 @@ import { AdminEditIssueList } from "./components/AdminEditIssueList";
 import { AdminEditProblem } from "./components/AdminEditProblem";
 import { Result } from "./components/Result";
 import { ResultTest } from "./components/ResultTest";
+import { AdminCreateIssue } from "./components/AdminCreateIssue";
 
 const App = () => {
 
@@ -73,6 +74,9 @@ const App = () => {
             </Route>
             <Route exact path="/admin/user_result/:user_id">
                 <AdminUserResultList />
+            </Route>
+            <Route exact path="/admin/create_issue">
+                <AdminCreateIssue />
             </Route>
             <Route exact path="/admin/edit_subject">
                 <AdminEditSubjectList />
