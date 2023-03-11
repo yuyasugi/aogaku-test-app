@@ -14,19 +14,14 @@ use App\Models\UnitIssue;
 class StoreController extends Controller
 {
     public function store(Request $request){
-        $posts = $request->all();
-        $createSubjects = DB::table('subjects')->get();
-        $createReferenceBooks = DB::table('reference_books')->get();
-        $createUnits = DB::table('units')->get();
 
-        DB::transaction(function() use($posts){
-            $issue_id = Issue::insertGetId(['problem' => $posts['problem'], 'anser' => $posts['anser'], 'commentary' => $posts['commentary']]);
+        DB::transaction(function() use($request){
+            // return response()->json($request);
+            $issue_id = Issue::insertGetId(['problem' => $request->valueProblem, 'anser' => $request->valueAnser, 'commentary' => $request->valueVCommentary]);
 
-            $unit_id = $posts['unit'];
+            $unit_id = $request->selectedUnit;
             UnitIssue::insert(['unit_id' => $unit_id, 'issue_id' => $issue_id]);
 
         });
-
-        return view('admin.create_issue', compact(['createSubjects', 'createReferenceBooks', 'createUnits']));
      }
 }
