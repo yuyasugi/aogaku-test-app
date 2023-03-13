@@ -61,7 +61,7 @@ export const IssueTestList = () => {
             return (
                 <Box key={s.id}>
                     <FormLabel pt={10}>{s.problem}</FormLabel>
-                    <Input onChange={(e) => onChangeInput(e.target.value, s.id)} type='text' focusBorderColor='lime' placeholder='解答を入力してください' bg='whiteAlpha.800' my={2} width='99%' autoComplete="off"/>
+                    <Input onChange={(e) => onChangeInput(e.target.value, s.id)} type='text' focusBorderColor="green.700" placeholder='解答を入力してください' bg='whiteAlpha.800' my={2} width='99%' autoComplete="off"/>
                     <Box color='red'>
                         {resultList.length > 0 && resultList.find(r => r.issue_id === s.id)?.commentary}
                     </Box>

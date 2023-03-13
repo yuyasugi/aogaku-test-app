@@ -88,11 +88,11 @@ import { Message } from "./organizm/Message";
             )})}
             </Select>
             <FormLabel>問題文</FormLabel>
-                    <Input onChange={handleChangeProblrm} value={valueProblem} name="problem" type='text' focusBorderColor='lime' placeholder='問題文を入力してください' bg='whiteAlpha.800' my={2} width='99%' autoComplete="off"/>
+                    <Input onChange={handleChangeProblrm} value={valueProblem} name="problem" type='text' focusBorderColor="green.700" placeholder='問題文を入力してください' bg='whiteAlpha.800' my={2} width='99%' autoComplete="off"/>
             <FormLabel>解答</FormLabel>
-                    <Input onChange={handleChangeAnser} value={valueAnser} name="anser" type='text' focusBorderColor='lime' placeholder='解答を入力してください' bg='whiteAlpha.800' my={2} width='99%' autoComplete="off"/>
+                    <Input onChange={handleChangeAnser} value={valueAnser} name="anser" type='text' focusBorderColor="green.700" placeholder='解答を入力してください' bg='whiteAlpha.800' my={2} width='99%' autoComplete="off"/>
             <FormLabel>解説</FormLabel>
-                    <Textarea onChange={handleChangeCommentary} value={valueVCommentary} name="commentary" type='text' focusBorderColor='lime' placeholder='解説を入力してください' bg='whiteAlpha.800' my={2} width='99%' autoComplete="off"/>
+                    <Textarea onChange={handleChangeCommentary} value={valueVCommentary} name="commentary" type='text' focusBorderColor="green.700" placeholder='解説を入力してください' bg='whiteAlpha.800' my={2} width='99%' autoComplete="off"/>
             <Button onClick={onClickAdd} mt={4} colorScheme="teal" type="submit">
                 問題を追加する
             </Button>

@@ -29,7 +29,7 @@ import { useHistory } from "react-router-dom";
             <HeaderUser />
             <SContainer>
                 <>
-                <Wrap>
+                <Wrap margin="0 auto" width="65%">
                 {subjectTestList.map((s) => {
             return (
                     <WrapItem>

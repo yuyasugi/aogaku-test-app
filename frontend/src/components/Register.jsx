@@ -2,10 +2,14 @@ import React, { useState } from "react";
 import axios from 'axios';
 import swal from 'sweetalert';
 import { useHistory } from 'react-router-dom';
+import { Button, Card, CardBody, ChakraProvider, Input } from "@chakra-ui/react";
 
 function Register() {
-
     const history = useHistory();
+
+    const moveLogin = () => {
+        history.push('/login');
+    };
 
     const [registerInput, setRegister] = useState({
         name: '',
@@ -42,39 +46,45 @@ function Register() {
         });
     }
 
-    return (<div className="container">
+    return (
+        <ChakraProvider>
+            <div className="container">
         <div className="row justify-content-center">
             <div className="col-md-6 col-lg-6 mx-auto">
-                <div className="card">
+                <Card maxW='sm'  margin="auto" marginTop="20%">
+                    <CardBody>
                     <div className="card-header">
-                        <h4>Register</h4>
+                        <h4>新規登録</h4>
                     </div>
                     <div className="card-body">
                         <form onSubmit={registerSubmit}>
                             <div className="form-group mb-3">
-                                <label>User Name</label>
-                                <input type="" name="name" onChange={handleInput} value={registerInput.name} className="form-control" />
+                                <label>名前</label>
+                                <Input type="" name="name" onChange={handleInput} value={registerInput.name} className="form-control" focusBorderColor="green.700" />
                                 <span>{registerInput.error_list.name}</span>
                             </div>
                             <div className="form-group mb-3">
-                                <label>Mail Address</label>
-                                <input type="" name="email" onChange={handleInput} value={registerInput.email} className="form-control" />
+                                <label>メールアドレス</label>
+                                <Input type="" name="email" onChange={handleInput} value={registerInput.email} className="form-control" focusBorderColor="green.700" />
                                 <span>{registerInput.error_list.email}</span>
                             </div>
                             <div className="form-group mb-3">
-                                <label>Password</label>
-                                <input type="" name="password" onChange={handleInput} value={registerInput.password} className="form-control" />
+                                <label>パスワード</label>
+                                <Input type="" name="password" onChange={handleInput} value={registerInput.password} className="form-control" focusBorderColor="green.700" />
                                 <span>{registerInput.error_list.password}</span>
                             </div>
                             <div className="form-group mb-3">
-                                <button type="submit" className="btn btn-primary">Register</button>
+                                <Button type="submit" marginTop={3} marginRight={2} color="green.700">新規登録</Button>
+                                <Button type="submit" marginTop={3} onClick={moveLogin} color="green.700">ログインへ</Button>
                             </div>
                         </form>
                     </div>
-                </div>
+                    </CardBody>
+                </Card>
             </div>
         </div>
     </div>
+        </ChakraProvider>
     );
 }
 

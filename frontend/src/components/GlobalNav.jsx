@@ -1,8 +1,9 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useContext } from 'react';
 import {Link, useHistory} from 'react-router-dom';
 import axios from 'axios';
 import swal from 'sweetalert';
 import { LoginContext } from './providers/LoginProviders';
+import styled from "styled-components";
 
 function GlobalNav () {
     const history = useHistory();
@@ -27,11 +28,11 @@ function GlobalNav () {
 
     if (isLogin){
         AuthButtons = (
-            <li>
+            <SLi>
                 <div onClick={logoutSubmit}>
                     <span className="text-white">ログアウト</span>
                 </div>
-            </li>
+            </SLi>
         );
     } else {
         AuthButtons = (
@@ -52,19 +53,13 @@ function GlobalNav () {
 
     return(
         <ul>
-            <li>
-                <Link to="/">
-                    <span>Top</span>
-                </Link>
-            </li>
-            <li>
-                <Link to="/about">
-                    <span>About</span>
-                </Link>
-            </li>
             {AuthButtons}
         </ul>
     )
 }
+
+const SLi = styled.li`
+    list-style: none;
+    `
 
 export default GlobalNav;

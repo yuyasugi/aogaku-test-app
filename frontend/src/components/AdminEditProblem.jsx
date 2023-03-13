@@ -68,15 +68,15 @@ import { Button, ChakraProvider, FormControl, FormLabel, Input, Textarea } from 
         <ChakraProvider>
             <FormControl>
             <FormLabel>問題文</FormLabel>
-            <Input defaultValue={adminEditProblem.problem} onChange={handleChangeProblrm} type='text' focusBorderColor='lime' bg='whiteAlpha.800' my={2} width='99%' autoComplete="off"/>
+            <Input defaultValue={adminEditProblem.problem} onChange={handleChangeProblrm} type='text' focusBorderColor="green.700" bg='whiteAlpha.800' my={2} width='99%' autoComplete="off"/>
             <FormLabel>解答</FormLabel>
-            <Input defaultValue={adminEditProblem.anser} onChange={handleChangeAnser} type='text' focusBorderColor='lime' bg='whiteAlpha.800' my={2} width='99%' autoComplete="off"/>
+            <Input defaultValue={adminEditProblem.anser} onChange={handleChangeAnser} type='text' focusBorderColor="green.700" bg='whiteAlpha.800' my={2} width='99%' autoComplete="off"/>
             <FormLabel>解説</FormLabel>
-            <Textarea defaultValue={adminEditProblem.commentary} onChange={handleChangeCommentary} type='text' focusBorderColor='lime' bg='whiteAlpha.800' my={2} width='99%' autoComplete="off" pt={6}/>
-            <Button onClick={onClickEdit} mt={4} colorScheme="teal" type="submit">
+            <Textarea defaultValue={adminEditProblem.commentary} onChange={handleChangeCommentary} type='text' focusBorderColor="green.700" bg='whiteAlpha.800' my={2} width='99%' autoComplete="off" pt={6} height="400px" />
+            <Button onClick={onClickEdit} mt={4} color="green.700" type="submit" marginRight={2}>
                 問題を編集する
             </Button>
-            <Button onClick={onClickDestroy} mt={4} colorScheme="teal" type="submit">
+            <Button onClick={onClickDestroy} mt={4} color="green.700" type="submit">
                 問題を削除する
             </Button>
             </FormControl>
