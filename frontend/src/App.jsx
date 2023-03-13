@@ -45,7 +45,6 @@ const App = () => {
         <div className="App">
         </div>
         <LoginProviders>
-        <GlobalNav />
         <Switch>
             <Route exact path="/">
                 <Home />

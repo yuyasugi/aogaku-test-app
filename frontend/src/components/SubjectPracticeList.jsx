@@ -30,7 +30,7 @@ import { useHistory } from "react-router-dom";
             <HeaderUser />
             <SContainer>
                 <>
-                <Wrap>
+                <Wrap margin="0 auto" width="65%">
                 {subjectPracticeList.map((s) => {
             return (
                     <WrapItem>
@@ -47,7 +47,7 @@ import { useHistory } from "react-router-dom";
 
     const SContainer = styled.div`
     background-color: rgba(1, 75, 21, 40%);
-    height: 200vh;
+    height: 100vh;
     width: 100%;
     display: flex;
     `

@@ -32,7 +32,7 @@ import styled from "styled-components";
             <HeaderUser />
             <SContainer>
                 <>
-                <Wrap>
+                <Wrap margin="0 auto" width="65%">
                 {unitPracticeList.map((s) => {
             return (
                     <WrapItem>

@@ -1,8 +1,9 @@
 import React from "react";
 import styled from "styled-components";
 
-import { Button, ChakraProvider } from "@chakra-ui/react";
+import { Box, Button, ChakraProvider } from "@chakra-ui/react";
 import { useHistory } from "react-router-dom";
+import GlobalNav from "./GlobalNav";
 
 
     export const Home = () => {
@@ -19,6 +20,9 @@ import { useHistory } from "react-router-dom";
             <ChakraProvider>
                 <SContainer>
                     <SBox>
+                        <Box display="inline-block" color="white" fontWeight="bold" fontSize="20px" float="right" marginRight="5%" marginTop="3%">
+                        <GlobalNav />
+                        </Box>
                     <STextBox>
                     <STitle>青学コーチング</STitle>
                     <SSabTitle>テストツール</SSabTitle>

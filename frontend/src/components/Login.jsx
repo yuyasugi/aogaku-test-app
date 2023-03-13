@@ -3,10 +3,16 @@ import swal from "sweetalert";
 import { useHistory } from 'react-router-dom';
 import axios from 'axios';
 import { LoginContext } from "./providers/LoginProviders";
+import { Button, Card, CardBody, ChakraProvider, Input } from "@chakra-ui/react";
+import styled from "styled-components";
 
 function Login() {
     const { setIsLogin } = useContext(LoginContext);
     const history = useHistory();
+
+    const moveRegister = () => {
+        history.push('/register');
+    };
 
     const [loginInput, setLogin] = useState({
         email: '',
@@ -44,35 +50,51 @@ function Login() {
         });
     }
 
-    return (<div className="container">
+    return (
+        <ChakraProvider>
+            <div className="container">
             <div className="row justify-content-center">
                 <div className="col-md-6 col-lg-6 mx-auto">
-                    <div className="card">
-                        <div className="card-header">
-                            <h4>Login</h4>
-                        </div>
+                    <div>
+                        <img src="" alt="" />
+                    </div>
+                    <Card maxW='sm'  margin="auto" marginTop="20%">
+                        <CardBody>
+                        <SCardHeader>
+                            <h4>ログイン</h4>
+                        </SCardHeader>
                         <div className="card-body">
                             <form onSubmit={loginSubmit}>
                                 <div className="form-group mb-3">
-                                    <label>Mail Address</label>
-                                    <input type="email" name="email" onChange={handleInput} value={loginInput.email} className="form-control" />
+                                    <label>メールアドレス</label>
+                                    <Input type="email" name="email" onChange={handleInput} value={loginInput.email} className="form-control" focusBorderColor="green.700" />
                                     <span>{loginInput.error_list.email}</span>
                                 </div>
                                 <div className="form-group mb-3">
-                                    <label>Password</label>
-                                    <input type="password" name="password" onChange={handleInput} value={loginInput.password} className="form-control" />
+                                    <label>パスワード</label>
+                                    <Input type="password" name="password" onChange={handleInput} value={loginInput.password} className="form-control" focusBorderColor="green.700" />
                                     <span>{loginInput.error_list.password}</span>
                                 </div>
                                 <div className="form-group mb-3">
-                                    <button type="submit" className="btn btn-primary">Login</button>
+                                    <Button type="submit" marginTop={3} marginRight={2} color="green.700">ログイン</Button>
+                                    <Button type="submit" marginTop={3} onClick={moveRegister} color="green.700">新規登録へ</Button>
                                 </div>
                             </form>
                         </div>
-                    </div>
+                        </CardBody>
+                    </Card>
                 </div>
             </div>
         </div>
+        </ChakraProvider>
     );
 }
+
+const SCardHeader = styled.div`
+margin-bottom: 10px;
+    }
+    `
+
+
 
 export default Login;

@@ -9,7 +9,7 @@ import styled from "styled-components";
             <Button
             as='a'
             onClick={() => onClick()}
-            mx='10' my='5'
+            mx='16' my='5'
             borderRadius='10px'
             borderWidth='1px'
             bg='white'
@@ -27,7 +27,7 @@ import styled from "styled-components";
 
 
     const SLetter = styled.span`
-    font-size:3em;
+    font-size:35px;
     line-height:0.95em;
 	font-weight:bold;
 	color: rgba(1, 75, 21, 85%);
