@@ -4,11 +4,11 @@ import { Button } from "@chakra-ui/react";
 import styled from "styled-components";
 
     export const SelectButton = (props) => {
-        const { name, URL } = props;
+        const { name, onClick } = props;
         return(
             <Button
             as='a'
-            href={URL}
+            onClick={() => onClick()}
             mx='10' my='5'
             borderRadius='10px'
             borderWidth='1px'

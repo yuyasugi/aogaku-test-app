@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom"
+import { useHistory, useParams } from "react-router-dom"
 import axios from "axios";
 import { ChakraProvider, Wrap, WrapItem } from "@chakra-ui/react";
 import { HeaderUser } from "./organizm/HeaderUser";
@@ -8,6 +8,7 @@ import styled from "styled-components";
 
 
     export const UnitTestList = () => {
+        const history = useHistory();
         const { reference_book_id } = useParams();
         const url = `http://localhost:8888/api/unit_test/${reference_book_id}`;
         const [unitTestList, setunitTestList] = useState([])
@@ -34,7 +35,7 @@ import styled from "styled-components";
                 {unitTestList.map((s) => {
             return (
                     <WrapItem>
-                        <SelectButton name={s.name} URL={`/issue_test/${s.id}`} />
+                        <SelectButton name={s.name} onClick={() => history.push(`/issue_test/${s.id}`)} />
                     </WrapItem>
                     )})}
                 </Wrap>

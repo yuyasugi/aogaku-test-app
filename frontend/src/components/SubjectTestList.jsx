@@ -4,9 +4,11 @@ import { ChakraProvider, Wrap, WrapItem } from "@chakra-ui/react";
 import { HeaderUser } from "./organizm/HeaderUser";
 import { SelectButton } from "./organizm/SelectButton";
 import styled from "styled-components";
+import { useHistory } from "react-router-dom";
 
 
     export const SubjectTestList = () => {
+        const history = useHistory();
         const url = "http://localhost:8888/api/subject_test";
         const [subjectTestList, setsubjectTestList] = useState([])
         useEffect(()=>{
@@ -31,7 +33,7 @@ import styled from "styled-components";
                 {subjectTestList.map((s) => {
             return (
                     <WrapItem>
-                        <SelectButton name={s.name} URL={`/reference_book_test/${s.id}`} />
+                        <SelectButton name={s.name} onClick={() => history.push(`/reference_book_test/${s.id}`)} />
                     </WrapItem>
                     )})}
                 </Wrap>
