@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom"
+import { useHistory, useParams } from "react-router-dom"
 import axios from "axios";
 
 import { HeaderUser } from "./organizm/HeaderUser";
@@ -9,6 +9,7 @@ import styled from "styled-components";
 
 
     export const UnitPracticeList = () => {
+        const history = useHistory();
         const { reference_book_id } = useParams();
         const url = `http://localhost:8888/api/unit_practice/${reference_book_id}`;
         const [unitPracticeList, setUnitPracticeList] = useState([])
@@ -35,7 +36,7 @@ import styled from "styled-components";
                 {unitPracticeList.map((s) => {
             return (
                     <WrapItem>
-                        <SelectButton name={s.name} URL={`/issue/${s.id}`} />
+                        <SelectButton name={s.name} onClick={() => history.push(`/issue/${s.id}`)} />
                     </WrapItem>
                     )})}
                 </Wrap>

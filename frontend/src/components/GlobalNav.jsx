@@ -1,10 +1,13 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import {Link, useHistory} from 'react-router-dom';
 import axios from 'axios';
 import swal from 'sweetalert';
+import { LoginContext } from './providers/LoginProviders';
 
 function GlobalNav () {
     const history = useHistory();
+
+    const { isLogin, setIsLogin } = useContext(LoginContext);
 
     const logoutSubmit = (e) => {
         e.preventDefault();
@@ -17,11 +20,20 @@ function GlobalNav () {
                 history.push('/');
             }
         });
+        setIsLogin(false);
     }
 
     var AuthButtons = '';
 
-    if (!localStorage.getItem('auth_token')){
+    if (isLogin){
+        AuthButtons = (
+            <li>
+                <div onClick={logoutSubmit}>
+                    <span className="text-white">ログアウト</span>
+                </div>
+            </li>
+        );
+    } else {
         AuthButtons = (
             <>
             <li>
@@ -35,14 +47,6 @@ function GlobalNav () {
                 </Link>
             </li>
             </>
-        );
-    } else {
-        AuthButtons = (
-            <li>
-                <div onClick={logoutSubmit}>
-                    <span className="text-white">ログアウト</span>
-                </div>
-            </li>
         );
     }
 

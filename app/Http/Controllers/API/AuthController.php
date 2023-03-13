@@ -40,16 +40,16 @@ class AuthController extends Controller
     }
 
     public function login(Request $request) {
-        // $validator = Validator::make($request->all(), [
-        //     'email'=>'required',
-        //     'password'=>'required',
-        // ]);
+        $validator = Validator::make($request->all(), [
+            'email'=>'required',
+            'password'=>'required',
+        ]);
 
-        // if ($validator->fails()){
-        //     return response()->json([
-        //         'validation_errors'=>$validator->messages(),
-        //     ]);
-        // } else {
+        if ($validator->fails()){
+            return response()->json([
+                'validation_errors'=>$validator->messages(),
+            ]);
+        } else {
             $user = User::where('email', $request->email)->first();
             if (! $user || ! Hash::check($request->password, $user->password)) {
                 return response()->json([
@@ -66,7 +66,7 @@ class AuthController extends Controller
                     'message'=>'ログインに成功しました。'
                 ]);
             }
-        // }
+        }
     }
 
     public function logout(){

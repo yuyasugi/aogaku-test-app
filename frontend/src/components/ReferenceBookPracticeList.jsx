@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom"
+import { useHistory, useParams } from "react-router-dom"
 import axios from "axios";
 import { ChakraProvider, Wrap, WrapItem } from "@chakra-ui/react";
 import { HeaderUser } from "./organizm/HeaderUser";
@@ -8,8 +8,8 @@ import styled from "styled-components";
 
 
     export const ReferenceBookPracticeList = () => {
+        const history = useHistory();
         const { subject_id } = useParams();
-        console.log(subject_id)
         const url = `http://localhost:8888/api/reference_book_practice/${subject_id}`;
         const [referenceBookPracticeList, setreferenceBookPracticeList] = useState([])
         useEffect(()=>{
@@ -18,13 +18,11 @@ import styled from "styled-components";
                 const res = await axios.get(url);
             console.log(res.data.referenceBookPractice);
             setreferenceBookPracticeList(res.data.referenceBookPractice)
-                return;
             }catch (e){
-                return e;
+                throw new Error(e);
             }
             })();
         },[]);
-        console.log("referenceBookPracticeList",referenceBookPracticeList);
 
     return  (
         <ChakraProvider>
@@ -35,7 +33,7 @@ import styled from "styled-components";
                 {referenceBookPracticeList.map((s) => {
             return (
                     <WrapItem>
-                        <SelectButton name={s.name} URL={`/unit_practice/${s.id}`} />
+                        <SelectButton name={s.name} onClick={() => history.push(`/unit_practice/${s.id}`)} />
                     </WrapItem>
                     )})}
                 </Wrap>

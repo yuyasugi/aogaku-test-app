@@ -25,6 +25,7 @@ import GlobalNav from "./components/GlobalNav";
 import Register from "./components/Register";
 import Login from "./components/Login";
 import axios from 'axios';
+import { LoginProviders } from "./components/providers/LoginProviders";
 
 axios.defaults.baseURL = "http://localhost:8000/";
 axios.defaults.headers.post['Content-Type'] = 'application/json';
@@ -43,6 +44,7 @@ const App = () => {
     <BrowserRouter>
         <div className="App">
         </div>
+        <LoginProviders>
         <GlobalNav />
         <Switch>
             <Route exact path="/">
@@ -118,6 +120,7 @@ const App = () => {
                 <AdminEditProblem />
             </Route>
         </Switch>
+    </LoginProviders>
     </BrowserRouter>
   );
 }

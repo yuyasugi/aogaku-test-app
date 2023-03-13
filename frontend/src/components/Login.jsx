@@ -1,10 +1,11 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import swal from "sweetalert";
 import { useHistory } from 'react-router-dom';
 import axios from 'axios';
+import { LoginContext } from "./providers/LoginProviders";
 
 function Login() {
-
+    const { setIsLogin } = useContext(LoginContext);
     const history = useHistory();
 
     const [loginInput, setLogin] = useState({
@@ -31,6 +32,7 @@ function Login() {
                 if(res.data.status === 200){
                     localStorage.setItem('auth_token', res.data.token);
                     localStorage.setItem('auth_name', res.data.username);
+                    setIsLogin(true);
                     swal("ログイン成功", res.data.message, "success");
                     history.push('/');
                 } else if (res.data.status === 401){

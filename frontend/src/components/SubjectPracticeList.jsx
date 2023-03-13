@@ -5,9 +5,11 @@ import { HeaderUser } from "./organizm/HeaderUser";
 import { ChakraProvider, Wrap, WrapItem } from "@chakra-ui/react";
 import styled from "styled-components";
 import { SelectButton } from "./organizm/SelectButton";
+import { useHistory } from "react-router-dom";
 
 
     export const SubjectPracticeList = () => {
+        const history = useHistory();
         const url = "http://localhost:8888/api/subject_practice";
         const [subjectPracticeList, setSubjectPracticeList] = useState([])
         useEffect(()=>{
@@ -32,7 +34,7 @@ import { SelectButton } from "./organizm/SelectButton";
                 {subjectPracticeList.map((s) => {
             return (
                     <WrapItem>
-                        <SelectButton name={s.name} URL={`/reference_book_practice/${s.id}`} />
+                        <SelectButton name={s.name} onClick={() => history.push(`/reference_book_practice/${s.id}`)} />
                     </WrapItem>
                     )})}
                 </Wrap>
