@@ -11,11 +11,13 @@ use App\Models\UnitIssue;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 
 
 class ResultTestController extends Controller
 {
     public function result_test(Request $request){
+        return response()->json($request);
         $result = Result::create(['unit_id' => $request->unit_id, 'user_id' => 1]);
         $issue = new Issue;
         $posts = $request->except(['_token', 'unit_id']);

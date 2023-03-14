@@ -49,6 +49,5 @@ import styled from "styled-components";
 
     const SContainer = styled.div`
     background-color: rgba(1, 75, 21, 40%);
-    height: 200vh;
     width: 100%;
     `

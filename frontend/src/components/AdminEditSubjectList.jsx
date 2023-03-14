@@ -5,6 +5,7 @@ import { HeaderUser } from "./organizm/HeaderUser";
 import { SelectButton } from "./organizm/SelectButton";
 import styled from "styled-components";
 import { useHistory } from "react-router-dom";
+import { HeaderAdmin } from "./organizm/HeaderAdmin";
 
 
     export const AdminEditSubjectList = () => {
@@ -26,7 +27,7 @@ import { useHistory } from "react-router-dom";
         console.log("adminEditSubjectList",adminEditSubjectList);
     return  (
         <ChakraProvider>
-            <HeaderUser />
+            <HeaderAdmin />
             <SContainer>
                 <>
                 <Wrap margin="0 auto" width="65%">
@@ -45,6 +46,5 @@ import { useHistory } from "react-router-dom";
 
     const SContainer = styled.div`
     background-color: rgba(1, 75, 21, 40%);
-    height: 200vh;
     width: 100%;
     `

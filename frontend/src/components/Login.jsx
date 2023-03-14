@@ -52,7 +52,7 @@ function Login() {
 
     return (
         <ChakraProvider>
-            <div className="container">
+            <SContainer>
             <div className="row justify-content-center">
                 <div className="col-md-6 col-lg-6 mx-auto">
                     <div>
@@ -85,7 +85,7 @@ function Login() {
                     </Card>
                 </div>
             </div>
-        </div>
+        </SContainer>
         </ChakraProvider>
     );
 }
@@ -94,6 +94,11 @@ const SCardHeader = styled.div`
 margin-bottom: 10px;
     }
     `
+
+const SContainer = styled.div`
+background-color: white;
+height: 100vh;
+`
 
 
 

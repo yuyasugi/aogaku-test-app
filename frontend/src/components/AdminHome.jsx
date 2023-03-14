@@ -1,8 +1,13 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import { Box, ChakraProvider } from "@chakra-ui/react";
+import { HeaderAdmin } from "./organizm/HeaderAdmin";
+import styled from "styled-components";
+import { useHistory } from "react-router-dom";
 
 
     export const AdminHome = () => {
+        const history = useHistory();
         const url = "http://localhost:8888/api/admin";
         const [adminHome, setadminHome] = useState([])
         useEffect(()=>{
@@ -20,11 +25,27 @@ import axios from "axios";
         console.log("adminHome",adminHome);
 
     return  (
-        <div>
-        {adminHome.map((s) => {
-            return (
-            <div>{s.name}</div>
-            )})}
-        </div>
+        <ChakraProvider>
+            <HeaderAdmin />
+            <SContainer>
+            <Box width="60%" margin="0 auto" textAlign="center" paddingTop={10}>
+            {adminHome.map((s) => {
+                return (
+                <Box onClick={() => history.push(`/admin/user_result/${s.id}`)} bg="whiteAlpha.800" display="inline-block" width="40%" margin="20px" height="55px" borderRadius="30px" shadow='0 2px 5px rgba(0, 0, 0, .13)' transition='all 0.3s ease 0s' _hover={{ boxShadow: '0 4px 20px rgba(0,0,0,0.25)', transform: 'translateY(-5px)' }}><SP>{s.name}</SP></Box>
+                )})}
+            </Box>
+            </SContainer>
+        </ChakraProvider>
         )
     }
+
+    const SContainer = styled.div`
+    background-color: rgba(1, 75, 21, 40%);
+    width: 100%;
+    `
+
+    const SP = styled.p`
+    font-size: 25px;
+    letter-spacing : 3px;
+    margin-top: 8px;
+    `

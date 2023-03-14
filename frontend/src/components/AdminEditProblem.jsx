@@ -3,6 +3,8 @@ import { useParams, useHistory } from "react-router-dom"
 import axios from "axios";
 import { Message } from "./organizm/Message";
 import { Button, ChakraProvider, FormControl, FormLabel, Input, Textarea } from "@chakra-ui/react";
+import { HeaderAdmin } from "./organizm/HeaderAdmin";
+import styled from "styled-components";
 
 
     export const AdminEditProblem = () => {
@@ -66,8 +68,11 @@ import { Button, ChakraProvider, FormControl, FormLabel, Input, Textarea } from 
 
     return  (
         <ChakraProvider>
-            <FormControl>
-            <FormLabel>問題文</FormLabel>
+            <HeaderAdmin />
+            <SContainer>
+                <SBox>
+                <FormControl>
+            <FormLabel pt={5}>問題文</FormLabel>
             <Input defaultValue={adminEditProblem.problem} onChange={handleChangeProblrm} type='text' focusBorderColor="green.700" bg='whiteAlpha.800' my={2} width='99%' autoComplete="off"/>
             <FormLabel>解答</FormLabel>
             <Input defaultValue={adminEditProblem.anser} onChange={handleChangeAnser} type='text' focusBorderColor="green.700" bg='whiteAlpha.800' my={2} width='99%' autoComplete="off"/>
@@ -80,6 +85,18 @@ import { Button, ChakraProvider, FormControl, FormLabel, Input, Textarea } from 
                 問題を削除する
             </Button>
             </FormControl>
+                </SBox>
+            </SContainer>
         </ChakraProvider>
         )
     }
+
+    const SContainer = styled.div`
+    background-color: rgba(1, 75, 21, 40%);
+    width: 100%;
+    `
+
+    const SBox = styled.div`
+    width: 95%;
+    margin:0 auto;
+    `

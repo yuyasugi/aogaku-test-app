@@ -18,10 +18,7 @@ import { AdminEditReferenceBookList } from "./components/AdminEditReferenceBookL
 import { AdminEditUnitList } from "./components/AdminEditUnitList";
 import { AdminEditIssueList } from "./components/AdminEditIssueList";
 import { AdminEditProblem } from "./components/AdminEditProblem";
-import { Result } from "./components/Result";
-import { ResultTest } from "./components/ResultTest";
 import { AdminCreateIssue } from "./components/AdminCreateIssue";
-import GlobalNav from "./components/GlobalNav";
 import Register from "./components/Register";
 import Login from "./components/Login";
 import axios from 'axios';
@@ -83,13 +80,6 @@ const App = () => {
             </Route>
             <Route path="/issue/:unit_id">
                 <IssueList />
-            </Route>
-
-            <Route path="/result">
-                <Result />
-            </Route>
-            <Route path="/result_test">
-                <ResultTest />
             </Route>
 
 
