@@ -45,7 +45,7 @@ import GlobalNav from "./GlobalNav";
     position: relative;
     background-image: url(https://cdn.pixabay.com/photo/2015/07/19/10/00/school-work-851328__480.jpg);
     background-position: center;
-    height: 100vh;
+    height: 820px;
     width: 100%;
     animation: fadein 2s forwards;
 

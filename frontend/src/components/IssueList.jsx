@@ -55,6 +55,7 @@ import styled from "styled-components";
         <ChakraProvider>
             <HeaderUser />
             <SContainer>
+                <SBox>
                 <Heading size='md' pt={5}>（）の中に入るものを解答してください。</Heading>
                 <FormControl>
                 {issueList.map((s) => {
@@ -79,6 +80,7 @@ import styled from "styled-components";
                     )
                     }
                 </FormControl>
+                </SBox>
             </SContainer>
         </ChakraProvider>
         )
@@ -86,6 +88,10 @@ import styled from "styled-components";
 
     const SContainer = styled.div`
     background-color: rgba(1, 75, 21, 40%);
-    height: 100%;
     width: 100%;
+    `
+
+    const SBox = styled.div`
+    width: 95%;
+    margin: 0 auto;
     `

@@ -5,6 +5,7 @@ import { ChakraProvider, Wrap, WrapItem } from "@chakra-ui/react";
 import { HeaderUser } from "./organizm/HeaderUser";
 import { SelectButton } from "./organizm/SelectButton";
 import styled from "styled-components";
+import { HeaderAdmin } from "./organizm/HeaderAdmin";
 
 
     export const AdminEditReferenceBookList = () => {
@@ -28,7 +29,7 @@ import styled from "styled-components";
 
     return  (
         <ChakraProvider>
-            <HeaderUser />
+            <HeaderAdmin />
             <SContainer>
                 <>
                 <Wrap margin="0 auto" width="65%">
@@ -47,6 +48,5 @@ import styled from "styled-components";
 
     const SContainer = styled.div`
     background-color: rgba(1, 75, 21, 40%);
-    height: 200vh;
     width: 100%;
     `

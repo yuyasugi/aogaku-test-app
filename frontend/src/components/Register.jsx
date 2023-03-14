@@ -3,6 +3,7 @@ import axios from 'axios';
 import swal from 'sweetalert';
 import { useHistory } from 'react-router-dom';
 import { Button, Card, CardBody, ChakraProvider, Input } from "@chakra-ui/react";
+import styled from "styled-components";
 
 function Register() {
     const history = useHistory();
@@ -48,9 +49,12 @@ function Register() {
 
     return (
         <ChakraProvider>
-            <div className="container">
+            <SContainer>
         <div className="row justify-content-center">
             <div className="col-md-6 col-lg-6 mx-auto">
+                    <div>
+                        <img src="" alt="" />
+                    </div>
                 <Card maxW='sm'  margin="auto" marginTop="20%">
                     <CardBody>
                     <div className="card-header">
@@ -83,9 +87,14 @@ function Register() {
                 </Card>
             </div>
         </div>
-    </div>
+    </SContainer>
         </ChakraProvider>
     );
 }
+
+const SContainer = styled.div`
+background-color: white;
+height: 100vh;
+`
 
 export default Register
