@@ -1,13 +1,15 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useParams, useHistory } from "react-router-dom"
 import axios from "axios";
 import { Message } from "./organizm/Message";
 import { Button, ChakraProvider, FormControl, FormLabel, Input, Textarea } from "@chakra-ui/react";
 import { HeaderAdmin } from "./organizm/HeaderAdmin";
 import styled from "styled-components";
+import { LoginContext } from "./providers/LoginProviders";
 
 
     export const AdminEditProblem = () => {
+        const { type } = useContext(LoginContext);
         const { id } = useParams();
         const url = `http://localhost:8888/api/edit/${id}`;
         const [adminEditProblem, setAdminEditProblem] = useState([])
@@ -39,8 +41,8 @@ import styled from "styled-components";
         const onClickDestroy = async () => {
             const res = await axios.post(`http://localhost:8888/api/destroy`,{id});
             console.log(res);
-            showMessage({ title: "削除が完了しました", status: "success" });
             history.push('/admin/edit_subject');
+            showMessage({ title: "削除が完了しました", status: "success" });
         }
 
         useEffect(()=>{
@@ -66,29 +68,31 @@ import styled from "styled-components";
         },[]);
         console.log("adminEditProblem",adminEditProblem);
 
-    return  (
-        <ChakraProvider>
-            <HeaderAdmin />
-            <SContainer>
-                <SBox>
-                <FormControl>
-            <FormLabel pt={5}>問題文</FormLabel>
-            <Input defaultValue={adminEditProblem.problem} onChange={handleChangeProblrm} type='text' focusBorderColor="green.700" bg='whiteAlpha.800' my={2} width='99%' autoComplete="off"/>
-            <FormLabel>解答</FormLabel>
-            <Input defaultValue={adminEditProblem.anser} onChange={handleChangeAnser} type='text' focusBorderColor="green.700" bg='whiteAlpha.800' my={2} width='99%' autoComplete="off"/>
-            <FormLabel>解説</FormLabel>
-            <Textarea defaultValue={adminEditProblem.commentary} onChange={handleChangeCommentary} type='text' focusBorderColor="green.700" bg='whiteAlpha.800' my={2} width='99%' autoComplete="off" pt={6} height="400px" />
-            <Button onClick={onClickEdit} mt={4} color="green.700" type="submit" marginRight={2}>
-                問題を編集する
-            </Button>
-            <Button onClick={onClickDestroy} mt={4} color="green.700" type="submit">
-                問題を削除する
-            </Button>
-            </FormControl>
-                </SBox>
-            </SContainer>
-        </ChakraProvider>
-        )
+        if(type === 'admin'){
+            return  (
+                <ChakraProvider>
+                    <HeaderAdmin />
+                    <SContainer>
+                        <SBox>
+                        <FormControl>
+                    <FormLabel pt={5}>問題文</FormLabel>
+                    <Input defaultValue={adminEditProblem.problem} onChange={handleChangeProblrm} type='text' focusBorderColor="green.700" bg='whiteAlpha.800' my={2} width='99%' autoComplete="off"/>
+                    <FormLabel>解答</FormLabel>
+                    <Input defaultValue={adminEditProblem.anser} onChange={handleChangeAnser} type='text' focusBorderColor="green.700" bg='whiteAlpha.800' my={2} width='99%' autoComplete="off"/>
+                    <FormLabel>解説</FormLabel>
+                    <Textarea defaultValue={adminEditProblem.commentary} onChange={handleChangeCommentary} type='text' focusBorderColor="green.700" bg='whiteAlpha.800' my={2} width='99%' autoComplete="off" pt={6} height="400px" />
+                    <Button onClick={onClickEdit} mt={4} color="green.700" type="submit" marginRight={2}>
+                        問題を編集する
+                    </Button>
+                    <Button onClick={onClickDestroy} mt={4} color="green.700" type="submit">
+                        問題を削除する
+                    </Button>
+                    </FormControl>
+                        </SBox>
+                    </SContainer>
+                </ChakraProvider>
+                )
+        }
     }
 
     const SContainer = styled.div`

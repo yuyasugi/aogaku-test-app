@@ -10,7 +10,8 @@ use Illuminate\Support\Facades\DB;
 class AdminUserController extends Controller
 {
     public function user(){
-        $users = DB::table('users')->get();
+        $users = User::where('type', 'student')->get();
+
         return response()->json(
             [
                 "users" => $users

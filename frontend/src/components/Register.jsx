@@ -4,6 +4,7 @@ import swal from 'sweetalert';
 import { useHistory } from 'react-router-dom';
 import { Button, Card, CardBody, ChakraProvider, Input } from "@chakra-ui/react";
 import styled from "styled-components";
+import logo from "../assets/images/logo.JPG"
 
 function Register() {
     const history = useHistory();
@@ -52,10 +53,10 @@ function Register() {
             <SContainer>
         <div className="row justify-content-center">
             <div className="col-md-6 col-lg-6 mx-auto">
-                    <div>
-                        <img src="" alt="" />
-                    </div>
-                <Card maxW='sm'  margin="auto" marginTop="20%">
+                    <SImg>
+                    <img width="400" height="400" src={logo} alt="" />
+                    </SImg>
+                <Card maxW='sm'  margin="auto" marginTop={10}>
                     <CardBody>
                     <div className="card-header">
                         <h4>新規登録</h4>
@@ -95,6 +96,11 @@ function Register() {
 const SContainer = styled.div`
 background-color: white;
 height: 100vh;
+`
+
+const SImg =styled.div`
+padding-left: 36%;
+padding-top: 200px;
 `
 
 export default Register

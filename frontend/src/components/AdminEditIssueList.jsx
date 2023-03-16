@@ -1,12 +1,14 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useHistory, useParams } from "react-router-dom"
 import axios from "axios";
 import { Box, ChakraProvider, Link } from "@chakra-ui/react";
 import { HeaderAdmin } from "./organizm/HeaderAdmin";
 import styled from "styled-components";
+import { LoginContext } from "./providers/LoginProviders";
 
 
     export const AdminEditIssueList = () => {
+        const { type } = useContext(LoginContext);
         const history = useHistory();
 
         const { unit_id } = useParams();
@@ -26,19 +28,21 @@ import styled from "styled-components";
         },[]);
         console.log("adminEditIssueList",adminEditIssueList);
 
-    return  (
-        <ChakraProvider>
-            <HeaderAdmin />
-            <SContainer>
-            <Box pt={5} width="70%" margin="0 auto" textAlign="center">
-        {adminEditIssueList.map((s) => {
-            return (
-            <Box mt={7} onClick={() => history.push(`/admin/edit/${s.id}`)} bg="whiteAlpha.800" display="inline-block" width="100%" height="45px" borderRadius="30px" whiteSpace="nowrap" overflow="hidden" shadow='0 2px 5px rgba(0, 0, 0, .13)' transition='all 0.3s ease 0s' _hover={{ cursor: "pointer", boxShadow: '0 4px 20px rgba(0,0,0,0.25)', transform: 'translateY(-5px)'  }}><SSpan>{s.problem}</SSpan></Box>
-            )})}
-        </Box>
-            </SContainer>
-        </ChakraProvider>
-        )
+        if(type === 'admin'){
+            return  (
+                <ChakraProvider>
+                    <HeaderAdmin />
+                    <SContainer>
+                    <Box pt={5} width="70%" margin="0 auto" textAlign="center">
+                {adminEditIssueList.map((s) => {
+                    return (
+                    <Box mt={7} onClick={() => history.push(`/admin/edit/${s.id}`)} bg="whiteAlpha.800" display="inline-block" width="100%" height="45px" borderRadius="30px" whiteSpace="nowrap" overflow="hidden" shadow='0 2px 5px rgba(0, 0, 0, .13)' transition='all 0.3s ease 0s' _hover={{ cursor: "pointer", boxShadow: '0 4px 20px rgba(0,0,0,0.25)', transform: 'translateY(-5px)'  }}><SSpan>{s.problem}</SSpan></Box>
+                    )})}
+                </Box>
+                    </SContainer>
+                </ChakraProvider>
+                )
+        }
     }
 
 

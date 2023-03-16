@@ -34,7 +34,7 @@ class AuthController extends Controller
                 'status'=>200,
                 'username'=>$user->name,
                 'token'=>$token,
-                'message'=>'Registerd Successfully'
+                'message'=>'登録が完了しました'
             ]);
         }
     }
@@ -62,8 +62,9 @@ class AuthController extends Controller
                 return response()->json([
                     'status'=>200,
                     'username'=>$user->name,
+                    'type'=>$user->type,
                     'token'=>$token,
-                    'message'=>'ログインに成功しました。'
+                    'message'=>'ログインに成功しました'
                 ]);
             }
         }
@@ -73,7 +74,7 @@ class AuthController extends Controller
         auth()->user()->tokens()->delete();
         return response()->json([
             'status'=>200,
-            'message'=>'ログアウト成功',
+            'message'=>'ログアウトに成功しました',
         ]);
     }
 }

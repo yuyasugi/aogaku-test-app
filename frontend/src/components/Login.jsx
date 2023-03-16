@@ -1,10 +1,11 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import swal from "sweetalert";
 import { useHistory } from 'react-router-dom';
 import axios from 'axios';
 import { LoginContext } from "./providers/LoginProviders";
 import { Button, Card, CardBody, ChakraProvider, Input } from "@chakra-ui/react";
 import styled from "styled-components";
+import logo from "../assets/images/logo.JPG"
 
 function Login() {
     const { setIsLogin } = useContext(LoginContext);
@@ -34,13 +35,19 @@ function Login() {
         }
 
         axios.get('/sanctum/csrf-cookie').then(response => {
+            // console.log(response);
             axios.post(`api/login`, data).then(res => {
+                console.log(res);
                 if(res.data.status === 200){
+                    if(res.data.type === 'student'){
+                        history.push('/');
+                    } else {
+                        history.push('/admin');
+                    }
                     localStorage.setItem('auth_token', res.data.token);
                     localStorage.setItem('auth_name', res.data.username);
                     setIsLogin(true);
                     swal("ログイン成功", res.data.message, "success");
-                    history.push('/');
                 } else if (res.data.status === 401){
                     swal("注意", res.data.message, "warning");
                 } else {
@@ -55,10 +62,10 @@ function Login() {
             <SContainer>
             <div className="row justify-content-center">
                 <div className="col-md-6 col-lg-6 mx-auto">
-                    <div>
-                        <img src="" alt="" />
-                    </div>
-                    <Card maxW='sm'  margin="auto" marginTop="20%">
+                    <SImg>
+                        <img width="400" height="400" src={logo} alt="" />
+                    </SImg>
+                    <Card maxW='sm'  margin="auto" marginTop={10}>
                         <CardBody>
                         <SCardHeader>
                             <h4>ログイン</h4>
@@ -98,6 +105,11 @@ margin-bottom: 10px;
 const SContainer = styled.div`
 background-color: white;
 height: 100vh;
+`
+
+const SImg =styled.div`
+padding-left: 36%;
+padding-top: 200px;
 `
 
 

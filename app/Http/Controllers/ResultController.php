@@ -17,7 +17,8 @@ use Illuminate\Support\Facades\Auth;
 class ResultController extends Controller
 {
     public function result(Request $request){
-        $result = Result::create(['unit_id' => $request->unit_id, 'user_id' => Auth::user()]);
+        // return response()->json($request);
+        $result = Result::create(['unit_id' => $request->unit_id, 'user_id' => $request->userId]);
         $issue = new Issue;
 
         foreach( $request->answers as $index => $answer){
