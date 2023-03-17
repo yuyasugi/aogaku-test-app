@@ -87,25 +87,25 @@ const App = () => {
             <Route exact path="/admin">
                 <AdminHome />
             </Route>
-            <Route exact path="/admin/user_result/:user_id">
+            <Route path="/admin/user_result/:user_id">
                 <AdminUserResultList />
             </Route>
-            <Route exact path="/admin/create_issue">
+            <Route path="/admin/create_issue">
                 <AdminCreateIssue />
             </Route>
-            <Route exact path="/admin/edit_subject">
+            <Route path="/admin/edit_subject">
                 <AdminEditSubjectList />
             </Route>
-            <Route exact path="/admin/edit_reference_book/:subject_id">
+            <Route path="/admin/edit_reference_book/:subject_id">
                 <AdminEditReferenceBookList />
             </Route>
-            <Route exact path="/admin/edit_unit/:reference_book_id">
+            <Route path="/admin/edit_unit/:reference_book_id">
                 <AdminEditUnitList />
             </Route>
-            <Route exact path="/admin/edit_issue/:unit_id">
+            <Route path="/admin/edit_issue/:unit_id">
                 <AdminEditIssueList />
             </Route>
-            <Route exact path="/admin/edit/:id">
+            <Route path="/admin/edit/:id">
                 <AdminEditProblem />
             </Route>
         </Switch>

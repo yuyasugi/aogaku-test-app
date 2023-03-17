@@ -45,7 +45,7 @@ import GlobalNav from "./GlobalNav";
     position: relative;
     background-image: url(https://cdn.pixabay.com/photo/2015/07/19/10/00/school-work-851328__480.jpg);
     background-position: center;
-    height: 820px;
+    height: 100vh;
     width: 100%;
     animation: fadein 2s forwards;
 
@@ -57,7 +57,7 @@ import GlobalNav from "./GlobalNav";
 
     const SBox = styled.div`
     width: 100%;
-    height: 100%;
+    height: 100vh;
     position: absolute;
     background-color: rgba(1, 75, 21,0.5);
     `

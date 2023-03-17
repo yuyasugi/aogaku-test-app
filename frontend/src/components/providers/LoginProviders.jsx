@@ -12,7 +12,7 @@ export const LoginProviders = (props) => {
     const [ isLogin, setIsLogin ] = useState(false);
     const  [ userId, setUserId ] = useState();
     const  [ type, setType ] = useState();
-    // console.log('isLogin',isLogin);
+    console.log('isLogin',isLogin);
 
     useEffect(()=>{
         (async ()=>{

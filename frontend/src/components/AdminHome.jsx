@@ -9,7 +9,7 @@ import { LoginContext } from "./providers/LoginProviders";
 
     export const AdminHome = () => {
         const { type } = useContext(LoginContext);
-        // console.log('type', type);
+        console.log('type', type);
         const history = useHistory();
         const url = "http://localhost:8888/api/admin";
         const [adminHome, setadminHome] = useState([])
@@ -27,7 +27,7 @@ import { LoginContext } from "./providers/LoginProviders";
         },[]);
         console.log("adminHome",adminHome);
 
-        if(type === 'admin'){
+        // if(type === 'admin'){
             return  (
                 <ChakraProvider>
                     <HeaderAdmin />
@@ -41,7 +41,7 @@ import { LoginContext } from "./providers/LoginProviders";
                     </SContainer>
                 </ChakraProvider>
                 )
-        } 
+        // }
     }
 
     const SContainer = styled.div`
