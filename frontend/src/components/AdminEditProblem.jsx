@@ -41,16 +41,13 @@ import { LoginContext } from "./providers/LoginProviders";
         const onClickDestroy = async () => {
             const res = await axios.post(`http://localhost:8888/api/destroy`,{id});
             console.log(res);
-            history.push('/admin/edit_subject');
-            showMessage({ title: "削除が完了しました", status: "success" });
+            history.push(`/admin/edit_issue/${adminEditProblem.unit_id}`);
         }
 
         useEffect(()=>{
             (async ()=>{
             try{
                 const res = await axios.get(url);
-            console.log(res.data.issue);
-            console.log(res.data.issue.anser);
             setAdminEditProblem(res.data.issue)
             setEditProblem(
                 res.data.issue.problem
