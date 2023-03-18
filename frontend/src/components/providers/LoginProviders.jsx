@@ -10,17 +10,20 @@ export const LoginProviders = (props) => {
     const url = `http://localhost:8888/api/user`;
 
     const [ isLogin, setIsLogin ] = useState(false);
+    const  [ userId, setUserId ] = useState();
+    const  [ type, setType ] = useState();
     console.log('isLogin',isLogin);
 
     useEffect(()=>{
-        console.log('aaa');
         (async ()=>{
             try{
                 const res = await axios.get(url);
-            console.log('res.data.id', res.data.id);
+            console.log('res', res);
             if(!res.data.id){
                 history.push('/login');
             }
+            setUserId(res.data.id);
+            setType(res.data.type);
             setIsLogin(true);
             }catch (e){
                 history.push('/login');
@@ -31,7 +34,7 @@ export const LoginProviders = (props) => {
 
 
     return (
-        <LoginContext.Provider value={{ isLogin, setIsLogin }}>
+        <LoginContext.Provider value={{ isLogin, setIsLogin, userId, type }}>
             {children}
         </LoginContext.Provider>
     )

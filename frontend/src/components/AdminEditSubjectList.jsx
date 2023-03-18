@@ -1,14 +1,15 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import axios from "axios";
 import { ChakraProvider, Wrap, WrapItem } from "@chakra-ui/react";
-import { HeaderUser } from "./organizm/HeaderUser";
 import { SelectButton } from "./organizm/SelectButton";
 import styled from "styled-components";
 import { useHistory } from "react-router-dom";
 import { HeaderAdmin } from "./organizm/HeaderAdmin";
+import { LoginContext } from "./providers/LoginProviders";
 
 
     export const AdminEditSubjectList = () => {
+        const { type } = useContext(LoginContext);
         const history = useHistory();
         const url = "http://localhost:8888/api/edit_subject";
         const [adminEditSubjectList, setAdminEditSubjectList] = useState([])
@@ -25,23 +26,26 @@ import { HeaderAdmin } from "./organizm/HeaderAdmin";
             })();
         },[]);
         console.log("adminEditSubjectList",adminEditSubjectList);
-    return  (
-        <ChakraProvider>
-            <HeaderAdmin />
-            <SContainer>
-                <>
-                <Wrap margin="0 auto" width="65%">
-                {adminEditSubjectList.map((s) => {
-            return (
-                    <WrapItem>
-                        <SelectButton name={s.name} onClick={() => history.push(`/admin/edit_reference_book/${s.id}`)} />
-                    </WrapItem>
-                    )})}
-                </Wrap>
-                </>
-            </SContainer>
-        </ChakraProvider>
-        )
+
+        if(type === 'admin'){
+            return  (
+                <ChakraProvider>
+                    <HeaderAdmin />
+                    <SContainer>
+                        <>
+                        <Wrap margin="0 auto" width="65%">
+                        {adminEditSubjectList.map((s) => {
+                    return (
+                            <WrapItem>
+                                <SelectButton name={s.name} onClick={() => history.push(`/admin/edit_reference_book/${s.id}`)} />
+                            </WrapItem>
+                            )})}
+                        </Wrap>
+                        </>
+                    </SContainer>
+                </ChakraProvider>
+                )
+        }
     }
 
     const SContainer = styled.div`

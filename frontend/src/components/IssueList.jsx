@@ -1,13 +1,16 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useParams, useHistory } from "react-router-dom"
 import axios from "axios";
 import { Button, ChakraProvider, FormControl, FormLabel, Input, Box, Heading } from "@chakra-ui/react";
 import { HeaderUser } from "./organizm/HeaderUser";
 import styled from "styled-components";
+import { LoginContext } from "./providers/LoginProviders";
 
 
     export const IssueList = () => {
         const { unit_id } = useParams();
+        const {userId} = useContext(LoginContext);
+        console.log(userId);
         const history = useHistory();
         const url = `http://localhost:8888/api/issue/${unit_id}`;
 
@@ -26,7 +29,7 @@ import styled from "styled-components";
         }
 
         const onClickAdd = async () => {
-            const res = await axios.post(`http://localhost:8888/api/result`,{answers, unit_id});
+            const res = await axios.post(`http://localhost:8888/api/result`,{answers, unit_id, userId});
             console.log(res);
             setResultList(res.data.issueResult);
         }

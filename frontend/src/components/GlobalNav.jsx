@@ -24,7 +24,7 @@ function GlobalNav () {
         setIsLogin(false);
     }
 
-    var AuthButtons = '';
+    let AuthButtons = '';
 
     if (isLogin){
         AuthButtons = (

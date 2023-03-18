@@ -17,8 +17,8 @@ use Illuminate\Support\Facades\Auth;
 class ResultTestController extends Controller
 {
     public function result_test(Request $request){
-        return response()->json($request);
-        $result = Result::create(['unit_id' => $request->unit_id, 'user_id' => 1]);
+        // return response()->json($request);
+        $result = Result::create(['unit_id' => $request->unit_id, 'user_id' => $request->userId]);
         $issue = new Issue;
         $posts = $request->except(['_token', 'unit_id']);
         $keys = array_keys($posts);

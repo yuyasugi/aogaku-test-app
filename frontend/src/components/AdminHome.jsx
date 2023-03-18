@@ -1,12 +1,15 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import axios from "axios";
 import { Box, ChakraProvider } from "@chakra-ui/react";
 import { HeaderAdmin } from "./organizm/HeaderAdmin";
 import styled from "styled-components";
 import { useHistory } from "react-router-dom";
+import { LoginContext } from "./providers/LoginProviders";
 
 
     export const AdminHome = () => {
+        const { type } = useContext(LoginContext);
+        console.log('type', type);
         const history = useHistory();
         const url = "http://localhost:8888/api/admin";
         const [adminHome, setadminHome] = useState([])
@@ -24,19 +27,21 @@ import { useHistory } from "react-router-dom";
         },[]);
         console.log("adminHome",adminHome);
 
-    return  (
-        <ChakraProvider>
-            <HeaderAdmin />
-            <SContainer>
-            <Box width="60%" margin="0 auto" textAlign="center" paddingTop={10}>
-            {adminHome.map((s) => {
-                return (
-                <Box onClick={() => history.push(`/admin/user_result/${s.id}`)} bg="whiteAlpha.800" display="inline-block" width="40%" margin="20px" height="55px" borderRadius="30px" shadow='0 2px 5px rgba(0, 0, 0, .13)' transition='all 0.3s ease 0s' _hover={{ boxShadow: '0 4px 20px rgba(0,0,0,0.25)', transform: 'translateY(-5px)' }}><SP>{s.name}</SP></Box>
-                )})}
-            </Box>
-            </SContainer>
-        </ChakraProvider>
-        )
+        // if(type === 'admin'){
+            return  (
+                <ChakraProvider>
+                    <HeaderAdmin />
+                    <SContainer>
+                    <Box width="60%" margin="0 auto" textAlign="center" paddingTop={10}>
+                    {adminHome.map((s) => {
+                        return (
+                        <Box onClick={() => history.push(`/admin/user_result/${s.id}`)} bg="whiteAlpha.800" display="inline-block" width="40%" margin="20px" height="55px" borderRadius="30px" shadow='0 2px 5px rgba(0, 0, 0, .13)' transition='all 0.3s ease 0s' _hover={{ boxShadow: '0 4px 20px rgba(0,0,0,0.25)', transform: 'translateY(-5px)' }}><SP>{s.name}</SP></Box>
+                        )})}
+                    </Box>
+                    </SContainer>
+                </ChakraProvider>
+                )
+        // }
     }
 
     const SContainer = styled.div`
