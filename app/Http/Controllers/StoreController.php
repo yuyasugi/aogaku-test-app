@@ -14,12 +14,9 @@ use App\Models\UnitIssue;
 class StoreController extends Controller
 {
     public function store(Request $request){
-        Issue::save(($request){
             $issue_id = Issue::insertGetId(['problem' => $request->valueProblem, 'anser' => $request->valueAnser, 'commentary' => $request->valueVCommentary]);
 
             $unit_id = $request->selectedUnit;
             UnitIssue::insert(['unit_id' => $unit_id, 'issue_id' => $issue_id]);
         }
-    );
-     }
 }
