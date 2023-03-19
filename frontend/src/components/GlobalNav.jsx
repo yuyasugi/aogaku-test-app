@@ -34,23 +34,7 @@ function GlobalNav () {
                 </div>
             </SLi>
         );
-    } else {
-        AuthButtons = (
-            <>
-            <li>
-                <Link to="/register">
-                    <span>Register</span>
-                </Link>
-            </li>
-            <li>
-                <Link to="/login">
-                    <span>Login</span>
-                </Link>
-            </li>
-            </>
-        );
-    }
-
+    } 
     return(
         <ul>
             {AuthButtons}

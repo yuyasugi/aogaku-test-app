@@ -20,7 +20,7 @@ import GlobalNav from "./GlobalNav";
             <ChakraProvider>
                 <SContainer>
                     <SBox>
-                        <Box display="inline-block" color="white" fontWeight="bold" fontSize="20px" float="right" marginRight="5%" marginTop="3%">
+                        <Box display="inline-block" color="white" fontWeight="bold" fontSize="20px" float="right" marginRight="5%" marginTop="3%"　_hover={{ cursor: 'pointer', opacity: 0.6 }}>
                         <GlobalNav />
                         </Box>
                     <STextBox>

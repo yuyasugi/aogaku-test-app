@@ -10,7 +10,7 @@ import { useHistory } from "react-router-dom";
 
     export const SubjectPracticeList = () => {
         const history = useHistory();
-        const url = "http://localhost:8888/api/subject_practice";
+        const url = "{process.env.REACT_APP_API_URL}/api/subject_practice";
         const [subjectPracticeList, setSubjectPracticeList] = useState([])
         useEffect(()=>{
             (async ()=>{
