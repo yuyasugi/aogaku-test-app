@@ -69,7 +69,6 @@ import GlobalNav from "./GlobalNav";
 
     const SButtonBox = styled.div`
     width: 100%;
-    height: 100%;
     display: flex;
     justify-content: center;
     padding-top:7%;
