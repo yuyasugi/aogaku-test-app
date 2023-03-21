@@ -54,7 +54,12 @@ Route::get('/reference_book_test/{subject_id}', [ReferenceBookTestController::cl
 Route::get('/unit_test/{reference_book_id}', [UnitTestController::class, 'unit_test'])->name('unit_test');
 Route::get('/issue_test/{unit_id}', [IssueTestController::class, 'issue_test'])->name('issue_test');
 
-Route::get('/subject_practice', [SubjectPracticeController::class, 'subject_practice'])->name('subject_practice');
+Route::group(['middleware' => ['api', 'cors']], function(){
+    Route::options('subject_practice', function() {
+        return response()->json();
+    });
+    Route::get('/subject_practice', [SubjectPracticeController::class, 'subject_practice'])->name('subject_practice');
+});
 Route::get('/reference_book_practice/{subject_id}', [ReferenceBookPracticeController::class, 'reference_practice'])->name('reference_book_practice');
 Route::get('/unit_practice/{reference_book_id}', [UnitPracticeController::class, 'unit_practice'])->name('unit_practice');
 Route::get('/issue/{unit_id}', [IssueController::class, 'issue'])->name('issue');

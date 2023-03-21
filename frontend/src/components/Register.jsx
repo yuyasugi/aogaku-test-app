@@ -5,9 +5,17 @@ import { useHistory } from 'react-router-dom';
 import { Button, Card, CardBody, ChakraProvider, Input } from "@chakra-ui/react";
 import styled from "styled-components";
 import logo from "../assets/images/logo.JPG"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faEye, faEyeSlash } from "@fortawesome/free-regular-svg-icons";
 
 function Register() {
     const history = useHistory();
+
+    const [isRevealPassword, setIsRevealPassword] = useState(false);
+
+    const togglePassword = () => {
+        setIsRevealPassword((prevState) => !prevState);
+      }
 
     const moveLogin = () => {
         history.push('/login');
@@ -75,12 +83,13 @@ function Register() {
                             </div>
                             <div className="form-group mb-3">
                                 <label>パスワード</label>
-                                <Input type="" name="password" onChange={handleInput} value={registerInput.password} className="form-control" focusBorderColor="green.700" />
+                                <Input type={isRevealPassword ? 'text' : 'password'} name="password" onChange={handleInput} value={registerInput.password} className="form-control" focusBorderColor="green.700" />
+                                <span onClick={togglePassword} role="presentation" > {isRevealPassword ? (<FontAwesomeIcon icon={faEye} />) : (<FontAwesomeIcon icon={faEyeSlash} />)}</span>
                                 <span>{registerInput.error_list.password}</span>
                             </div>
                             <div className="form-group mb-3">
                                 <Button type="submit" marginTop={3} marginRight={2} color="green.700">新規登録</Button>
-                                <Button type="submit" marginTop={3} onClick={moveLogin} color="green.700">ログインへ</Button>
+                                <Button type="submit" marginTop={3} onClick={moveLogin} marginLeft="37%" color="green.700">ログインへ</Button>
                             </div>
                         </form>
                     </div>
