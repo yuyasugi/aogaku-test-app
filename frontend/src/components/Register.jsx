@@ -83,7 +83,7 @@ function Register() {
                             </div>
                             <div className="form-group mb-3">
                                 <label>パスワード</label>
-                                <Input type={isRevealPassword ? 'text' : 'password'} name="password" onChange={handleInput} value={registerInput.password} className="form-control" focusBorderColor="green.700" />
+                                <Input type={isRevealPassword ? 'text' : 'password'} name="password" onChange={handleInput} value={registerInput.password} className="form-control" focusBorderColor="green.700" placeholder="8文字以上、半角英数で設定してください。" />
                                 <span onClick={togglePassword} role="presentation" > {isRevealPassword ? (<FontAwesomeIcon icon={faEye} />) : (<FontAwesomeIcon icon={faEyeSlash} />)}</span>
                                 <span>{registerInput.error_list.password}</span>
                             </div>
