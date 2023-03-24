@@ -38,6 +38,14 @@ use App\Http\Controllers\UpdateController;
 |
 */
 
+Route::get('/subject_test', [SubjectTestController::class, 'subject_test'])->name('subject_test');
+Route::get('/sample', function (){
+    return(
+        'Sample'
+     );
+}
+);
+
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
@@ -49,7 +57,7 @@ Route::middleware('auth:sanctum')->group(function() {
     Route::post('logout', [AuthController::class, 'logout']);
 });
 
-Route::get('/subject_test', [SubjectTestController::class, 'subject_test'])->name('subject_test');
+
 Route::get('/reference_book_test/{subject_id}', [ReferenceBookTestController::class, 'reference_test'])->name('reference_book_test');
 Route::get('/unit_test/{reference_book_id}', [UnitTestController::class, 'unit_test'])->name('unit_test');
 Route::get('/issue_test/{unit_id}', [IssueTestController::class, 'issue_test'])->name('issue_test');
