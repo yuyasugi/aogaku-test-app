@@ -33,7 +33,7 @@
     "eject": "react-scripts eject",
     "build:production": "yarn build && mv build/* ../public"
   },
-  "proxy": "http://laravel-react.test/",
+  "proxy": "https://y-sugi7647.sakura.ne.jp",
   "eslintConfig": {
     "extends": [
       "react-app",
