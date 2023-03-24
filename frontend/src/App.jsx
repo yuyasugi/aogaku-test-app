@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from 'react-dom';
-import { BrowserRouter, Route, Switch, browserHistory } from "react-router-dom";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
 
 import { Home } from "./components/Home";
 import { SubjectPracticeList } from "./components/SubjectPracticeList";
@@ -38,9 +38,8 @@ axios.interceptors.request.use(function(config){
 const App = () => {
 
   return (
-    <BrowserRouter history={browserHistory}>
+    <BrowserRouter>
         <div className="App">
-        </div>
         <LoginProviders>
         <Switch>
             <Route exact path="/">
@@ -110,6 +109,7 @@ const App = () => {
             </Route>
         </Switch>
     </LoginProviders>
+    </div>
     </BrowserRouter>
   );
 }
