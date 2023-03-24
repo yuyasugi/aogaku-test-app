@@ -41,6 +41,9 @@ const App = () => {
     <BrowserRouter>
         <div className="App">
         </div>
+        <Route path="/subject_practice">
+                <SubjectPracticeList />
+            </Route>
         <LoginProviders>
         <Switch>
             <Route exact path="/">
@@ -57,9 +60,7 @@ const App = () => {
             <Route path="/subject_test">
                 <SubjectTestList />
             </Route>
-            <Route path="/subject_practice">
-                <SubjectPracticeList />
-            </Route>
+
 
             <Route path="/reference_book_test/:subject_id">
                 <ReferenceBookTestList />
