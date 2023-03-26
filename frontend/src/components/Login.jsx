@@ -48,8 +48,9 @@ function Login() {
         axios.get('/sanctum/csrf-cookie').then(response => {
             // console.log(response);
             axios.post(`api/login`, data).then(res => {
-                console.log(res);
-                if(res.data.status === 200){
+                console.log('resStatus',res.status);
+                if(res.status === 200){
+                    console.log('resData', res.data);
                     setType(res.data.type);
                     if(res.data.type === 'student'){
                         history.push('/');
