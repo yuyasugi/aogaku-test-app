@@ -18,6 +18,8 @@ function Login() {
       }
 
     const { setIsLogin } = useContext(LoginContext);
+    const { setType } = useContext(LoginContext);
+
     const history = useHistory();
 
     const moveRegister = () => {
@@ -48,6 +50,7 @@ function Login() {
             axios.post(`api/login`, data).then(res => {
                 console.log(res);
                 if(res.data.status === 200){
+                    setType(res.data.type);
                     if(res.data.type === 'student'){
                         history.push('/');
                     } else {

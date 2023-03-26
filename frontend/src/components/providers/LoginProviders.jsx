@@ -23,7 +23,7 @@ export const LoginProviders = (props) => {
                 history.push('/login');
             }
             setUserId(res.data.id);
-            setType(res.data.type);
+            setType('');
             setIsLogin(true);
             }catch (e){
                 history.push('/login');
@@ -34,7 +34,7 @@ export const LoginProviders = (props) => {
 
 
     return (
-        <LoginContext.Provider value={{ isLogin, setIsLogin, userId, type }}>
+        <LoginContext.Provider value={{ isLogin, setIsLogin, userId, type, setType }}>
             {children}
         </LoginContext.Provider>
     )
