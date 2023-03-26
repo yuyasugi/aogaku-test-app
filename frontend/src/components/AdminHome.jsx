@@ -27,7 +27,7 @@ import { LoginContext } from "./providers/LoginProviders";
         },[]);
         console.log("adminHome",adminHome);
 
-        // if(type === 'admin'){
+        if(type === 'admin'){
             return  (
                 <ChakraProvider>
                     <HeaderAdmin />
@@ -41,7 +41,7 @@ import { LoginContext } from "./providers/LoginProviders";
                     </SContainer>
                 </ChakraProvider>
                 )
-        // }
+        }
     }
 
     const SContainer = styled.div`
