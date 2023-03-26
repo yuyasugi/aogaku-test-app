@@ -12,7 +12,7 @@ import { LoginContext } from "./providers/LoginProviders";
         const {userId} = useContext(LoginContext);
         console.log(userId);
         const history = useHistory();
-        const url = `http://localhost:8888/api/issue/${unit_id}`;
+        const url = `${process.env.REACT_APP_API_URL}/api/issue/${unit_id}`;
 
         const [issueList, setIssueList] = useState([])
 
@@ -29,7 +29,7 @@ import { LoginContext } from "./providers/LoginProviders";
         }
 
         const onClickAdd = async () => {
-            const res = await axios.post(`http://localhost:8888/api/result`,{answers, unit_id, userId});
+            const res = await axios.post(`${process.env.REACT_APP_API_URL}/api/result`,{answers, unit_id, userId});
             console.log(res);
             setResultList(res.data.issueResult);
         }

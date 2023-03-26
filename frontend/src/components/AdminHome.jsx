@@ -11,7 +11,7 @@ import { LoginContext } from "./providers/LoginProviders";
         const { type } = useContext(LoginContext);
         console.log('type', type);
         const history = useHistory();
-        const url = "http://localhost:8888/api/admin";
+        const url = `${process.env.REACT_APP_API_URL}/api/admin`;
         const [adminHome, setadminHome] = useState([])
         useEffect(()=>{
             (async ()=>{

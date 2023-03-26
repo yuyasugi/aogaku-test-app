@@ -2,7 +2,6 @@ import React, { useContext, useEffect, useState } from "react";
 import { useHistory, useParams } from "react-router-dom"
 import axios from "axios";
 import { ChakraProvider, Wrap, WrapItem } from "@chakra-ui/react";
-import { HeaderUser } from "./organizm/HeaderUser";
 import { SelectButton } from "./organizm/SelectButton";
 import styled from "styled-components";
 import { HeaderAdmin } from "./organizm/HeaderAdmin";
@@ -13,7 +12,7 @@ import { LoginContext } from "./providers/LoginProviders";
         const { type } = useContext(LoginContext);
         const history = useHistory();
         const { subject_id } = useParams();
-        const url = `http://localhost:8888/api/edit_reference_book/${subject_id}`;
+        const url = `${process.env.REACT_APP_API_URL}/api/edit_reference_book/${subject_id}`;
         const [adminEditReferenceBookList, setAdminEditReferenceBookList] = useState([])
         useEffect(()=>{
             (async ()=>{

@@ -11,7 +11,7 @@ import { LoginContext } from "./providers/LoginProviders";
     export const AdminEditSubjectList = () => {
         const { type } = useContext(LoginContext);
         const history = useHistory();
-        const url = "http://localhost:8888/api/edit_subject";
+        const url = `${process.env.REACT_APP_API_URL}/api/edit_subject`;
         const [adminEditSubjectList, setAdminEditSubjectList] = useState([])
         useEffect(()=>{
             (async ()=>{

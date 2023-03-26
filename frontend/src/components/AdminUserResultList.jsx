@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
-import { useHistory, useParams } from "react-router-dom"
+import { useParams } from "react-router-dom"
 import axios from "axios";
-import { Box, ChakraProvider, Table, TableContainer, Tbody, Td, Tfoot, Th, Thead, Tr } from "@chakra-ui/react";
+import { Box, ChakraProvider, Table, TableContainer, Tbody, Td, Th, Thead, Tr } from "@chakra-ui/react";
 import { HeaderAdmin } from "./organizm/HeaderAdmin";
 import styled from "styled-components";
 import { LoginContext } from "./providers/LoginProviders";
@@ -10,8 +10,7 @@ import { LoginContext } from "./providers/LoginProviders";
     export const AdminUserResultList = () => {
         const { type } = useContext(LoginContext);
         const { user_id } = useParams();
-        const history = useHistory();
-        const url = `http://localhost:8888/api/user_result/${user_id}`;
+        const url = `${process.env.REACT_APP_API_URL}/api/user_result/${user_id}`;
         const [adminUserResult, setadminUserResult] = useState([])
         useEffect(()=>{
             (async ()=>{
