@@ -11,7 +11,7 @@ import { LoginContext } from "./providers/LoginProviders";
     export const AdminEditProblem = () => {
         const { type } = useContext(LoginContext);
         const { id } = useParams();
-        const url = `http://localhost:8888/api/edit/${id}`;
+        const url = `${process.env.REACT_APP_API_URL}/api/edit/${id}`;
         const [adminEditProblem, setAdminEditProblem] = useState([])
 
         const [editProblem, setEditProblem] = useState("")
@@ -33,13 +33,13 @@ import { LoginContext } from "./providers/LoginProviders";
 
         const onClickEdit = async () => {
             console.log({editProblem, editAnser, editCommentary, id});
-            const res = await axios.post(`http://localhost:8888/api/update`,{editProblem, editAnser, editCommentary, id});
+            const res = await axios.post(`${process.env.REACT_APP_API_URL}/api/update`,{editProblem, editAnser, editCommentary, id});
             console.log(res);
             showMessage({ title: "編集が完了しました", status: "success" });
         }
 
         const onClickDestroy = async () => {
-            const res = await axios.post(`http://localhost:8888/api/destroy`,{id});
+            const res = await axios.post(`${process.env.REACT_APP_API_URL}/api/destroy`,{id});
             console.log(res);
             history.push(`/admin/edit_issue/${adminEditProblem.unit_id}`);
         }

@@ -11,7 +11,7 @@ import styled from "styled-components";
     export const UnitPracticeList = () => {
         const history = useHistory();
         const { reference_book_id } = useParams();
-        const url = `http://localhost:8888/api/unit_practice/${reference_book_id}`;
+        const url = `${process.env.REACT_APP_API_URL}/api/unit_practice/${reference_book_id}`;
         const [unitPracticeList, setUnitPracticeList] = useState([])
         useEffect(()=>{
             (async ()=>{

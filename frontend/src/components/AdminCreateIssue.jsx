@@ -4,14 +4,12 @@ import { FormControl, FormLabel, Select, Input, Button, ChakraProvider, Textarea
 import { Message } from "./organizm/Message";
 import { HeaderAdmin } from "./organizm/HeaderAdmin";
 import styled from "styled-components";
-import { useHistory } from "react-router-dom";
 import { LoginContext } from "./providers/LoginProviders";
 
 
     export const AdminCreateIssue = () => {
         const { type } = useContext(LoginContext);
-        const history = useHistory();
-        const url = "http://localhost:8888/api/create_issue";
+        const url = `${process.env.REACT_APP_API_URL}/api/create_issue`;
 
         const [adminCreateSubjects, setAdminCreateSubjects] = useState([])
         const [selectedSubject, setSelectedSubject] = useState("")
@@ -49,7 +47,7 @@ import { LoginContext } from "./providers/LoginProviders";
         const { showMessage } = Message();
 
         const onClickAdd = async () => {
-            const res = await axios.post(`http://localhost:8888/api/store`,{selectedSubject,selectedReferenceBook,selectedUnit,valueProblem,valueAnser,valueVCommentary});
+            const res = await axios.post(`${process.env.REACT_APP_API_URL}/api/store`,{selectedSubject,selectedReferenceBook,selectedUnit,valueProblem,valueAnser,valueVCommentary});
             console.log(res);
             showMessage({ title: "問題が追加されました", status: "success" });
             setSelectedSubject('');

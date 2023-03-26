@@ -10,7 +10,7 @@ import styled from "styled-components";
     export const UnitTestList = () => {
         const history = useHistory();
         const { reference_book_id } = useParams();
-        const url = `http://localhost:8888/api/unit_test/${reference_book_id}`;
+        const url = `${process.env.REACT_APP_API_URL}/api/unit_test/${reference_book_id}`;
         const [unitTestList, setunitTestList] = useState([])
         useEffect(()=>{
             (async ()=>{

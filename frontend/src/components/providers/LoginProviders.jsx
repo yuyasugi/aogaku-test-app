@@ -7,7 +7,7 @@ export const LoginContext = createContext({});
 export const LoginProviders = (props) => {
     const {children} = props;
     const history = useHistory();
-    const url = `http://localhost:8888/api/user`;
+    const url = `${process.env.REACT_APP_API_URL}/api/user`;
 
     const [ isLogin, setIsLogin ] = useState(false);
     const  [ userId, setUserId ] = useState();

@@ -10,7 +10,7 @@ import styled from "styled-components";
     export const ReferenceBookPracticeList = () => {
         const history = useHistory();
         const { subject_id } = useParams();
-        const url = `http://localhost:8888/api/reference_book_practice/${subject_id}`;
+        const url = `${process.env.REACT_APP_API_URL}/api/reference_book_practice/${subject_id}`;
         const [referenceBookPracticeList, setreferenceBookPracticeList] = useState([])
         useEffect(()=>{
             (async ()=>{

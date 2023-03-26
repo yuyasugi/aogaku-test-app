@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import { useHistory, useParams } from "react-router-dom"
 import axios from "axios";
-import { Box, ChakraProvider, Link } from "@chakra-ui/react";
+import { Box, ChakraProvider } from "@chakra-ui/react";
 import { HeaderAdmin } from "./organizm/HeaderAdmin";
 import styled from "styled-components";
 import { LoginContext } from "./providers/LoginProviders";
@@ -12,7 +12,7 @@ import { LoginContext } from "./providers/LoginProviders";
         const history = useHistory();
 
         const { unit_id } = useParams();
-        const url = `http://localhost:8888/api/edit_issue/${unit_id}`;
+        const url = `${process.env.REACT_APP_API_URL}/api/edit_issue/${unit_id}`;
         const [adminEditIssueList, setAdminEditIssueList] = useState([])
         useEffect(()=>{
             (async ()=>{
