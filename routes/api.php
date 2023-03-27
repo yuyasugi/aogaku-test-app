@@ -38,6 +38,12 @@ use App\Http\Controllers\UpdateController;
 |
 */
 
+
+    Route::get('/sample', function () {
+        return 'Sample';
+    });
+
+
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
