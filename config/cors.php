@@ -32,7 +32,7 @@ return [
     // 'supports_credentials' => true,
 
     'paths' => ['*'],
-    'allowed_origins' => ['*'],
+    'allowed_origins' => ['https://aogaku-test-app.sakura.ne.jp'],
     'allowed_origins_patterns' => [],
     'allowed_headers' => ['*'],
     'exposed_headers' => [],
