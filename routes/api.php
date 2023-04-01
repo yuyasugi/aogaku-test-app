@@ -38,9 +38,10 @@ use App\Http\Controllers\UpdateController;
 |
 */
 
-
-
-// Route::group(['middleware' => ['api','cors']], function(){
+Route::group(['middleware' => ['api','cors']], function(){
+    Route::options('articles', function() {
+        return response()->json();
+    });
 Route::get('/sample', function () {
     return 'Sample';
 });
@@ -79,4 +80,4 @@ Route::get('/edit_issue/{unit_id}', [EditIssueController::class, 'edit_issue'])-
 Route::get('/edit/{id}', [EditController::class, 'edit'])->name('edit');
 Route::post('/update', [UpdateController::class, 'update'])->name('update');
 Route::post('/destroy', [UpdateController::class, 'destroy'])->name('destroy');
-// });
+});
