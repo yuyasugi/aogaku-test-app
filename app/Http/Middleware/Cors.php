@@ -19,6 +19,6 @@ class Cors
         return $next($request)
         ->header('Access-Control-Allow-Origin', 'https://aogaku-test-app.sakura.ne.jp')
         ->header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS')
-        ->header('Access-Control-Allow-Headers', 'Content-Type');
+        ->header('Access-Control-Allow-Headers', 'Content-Type, X-Auth-Token, Origin, Authorization');
     }
 }
