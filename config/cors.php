@@ -31,8 +31,8 @@ return [
 
     // 'supports_credentials' => true,
 
-    'paths' => ['api/*', 'sanctum/csrf-cookie', 'login', 'logout'],
-    'allowed_origins' => ['*'],
+    'paths' => ['api/*', '/sanctum/csrf-cookie', 'login', 'logout'],
+    'allowed_origins' => ['https://aogaku-test-app.sakura.ne.jp/'],
     'allowed_origins_patterns' => [],
     'allowed_headers' => ['*'],
     'exposed_headers' => [],
