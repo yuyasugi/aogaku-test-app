@@ -32,12 +32,10 @@ return [
     // 'supports_credentials' => true,
 
     'paths' => ['api/*', '/sanctum/csrf-cookie', 'login', 'logout'],
-    'allowed_origins' => ['https://aogaku-test-app.sakura.ne.jp/'],
+    'allowed_origins' => ['https://aogaku-test-app.sakura.ne.jp/',"http://localhost:3000"],
     'allowed_origins_patterns' => [],
     'allowed_headers' => ['*'],
     'exposed_headers' => [],
     'max_age' => 0,
     'supports_credentials' => true,
-
-
 ];
