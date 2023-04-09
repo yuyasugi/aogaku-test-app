@@ -18,6 +18,7 @@ class Cors
     {
         return $next($request)
         ->header('Access-Control-Allow-Origin', 'https://aogaku-test-app.sakura.ne.jp')
+        ->header('Access-Control-Allow-Credentials','true')
         ->header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS')
         ->header('Access-Control-Allow-Headers', '*');
     }
